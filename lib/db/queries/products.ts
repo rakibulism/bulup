@@ -41,12 +41,29 @@ export async function saveFlows(productId: string, flows: any[]) {
   })
 }
 
-export async function getProductById(productId: string, userId: string) {
-  const user = await prisma.user.findUnique({ where: { clerkId: userId } })
-  if (!user) return null
+export async function getDesignSystemByProductId(productId: string) {
+  return await prisma.designSystem.findUnique({
+    where: { productId }
+  })
+}
 
-  return await prisma.product.findUnique({
-    where: { id: productId, userId: user.id },
-    include: { flows: true }
+export async function saveDesignSystem(productId: string, data: { brandInputs: any, palette: any, typography: any, spacing: any, components: any }) {
+  return await prisma.designSystem.upsert({
+    where: { productId },
+    update: {
+      brandInputs: data.brandInputs,
+      colorTokens: data.palette,
+      typography: data.typography,
+      spacing: data.spacing,
+      components: data.components,
+    },
+    create: {
+      productId,
+      brandInputs: data.brandInputs,
+      colorTokens: data.palette,
+      typography: data.typography,
+      spacing: data.spacing,
+      components: data.components,
+    }
   })
 }
