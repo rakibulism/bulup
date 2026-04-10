@@ -64,4 +64,4 @@ Forge follows a **Reductionist Dark Mode** aesthetic.
 
 ---
 
-Built by 💜 Rakibul Islam.
+Built by 💜 [Rakibul Islam](https://x.com/rakibulism).
