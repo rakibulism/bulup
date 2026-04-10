@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Forge — AI Product Orchestration Platform
 
-## Getting Started
+Forge is a high-agency product engineering tool designed to transform raw ideas into production-ready specifications, architectures, and design systems using Anthropic Claude.
 
-First, run the development server:
+## 🚀 Key Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Idea Workshop**: Interactive AI architecture generation with real-time streaming progress.
+- **UX Flow Builder**: Screen-by-screen journey mapping with full state documentation (loading, empty, error, etc.).
+- **Design System Studio**: Automated generation of primitive and semantic design tokens based on brand personality.
+- **Product Brain**: A persistent memory layer that logs strategic decisions and allows natural language querying.
+- **Handoff Center**: Multi-format exports including Markdown PRDs, CSS Variables, and Tailwind configurations.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠 Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 14 (App Router)
+- **Authentication**: Clerk
+- **AI**: Anthropic Claude 3.5 Sonnet
+- **Database**: Prisma + PostgreSQL (Supabase/Neon)
+- **Styling**: Tailwind CSS + Vanilla CSS Variables
+- **Animations**: Framer Motion
+- **Components**: Radix UI + Custom composed atoms/molecules
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Setup
 
-## Learn More
+1. **Clone and Install**:
+   ```bash
+   git clone https://github.com/rakibulism/bulup.git
+   cd bulup
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Environment Variables**:
+   Create a `.env.local` file:
+   ```env
+   # Clerk
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+   CLERK_SECRET_KEY=sk_test_...
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   # Anthropic
+   ANTHROPIC_API_KEY=sk-ant-api03-...
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   # Database
+   DATABASE_URL="postgresql://user:pass@host:port/dbname"
+   ```
 
-## Deploy on Vercel
+3. **Database Migration**:
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Run Development Server**:
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📐 Design Philosophy
+
+Forge follows a **Reductionist Dark Mode** aesthetic.
+- **Primary Accent**: Indigo Violet (#6E63F5)
+- **Background**: Near Black (#0C0C0C)
+- **Typography**: Inter (UI) and JetBrains Mono (Data/Tokens)
+- **Hierarchy**: Built through typography and weight before color.
+
+---
+
+Built by Forge AI.
