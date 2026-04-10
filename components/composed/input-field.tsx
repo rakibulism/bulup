@@ -10,7 +10,8 @@ export interface InputFieldProps extends InputProps {
 
 const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
   ({ label, error, helperText, className, id, ...props }, ref) => {
-    const inputId = id || React.useId()
+    const generatedId = React.useId()
+    const inputId = id || generatedId
     
     return (
       <div className={cn("grid w-full items-center gap-1.5", className)}>
