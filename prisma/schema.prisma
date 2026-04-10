@@ -1,0 +1,136 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String    @id @default(cuid())
+  clerkId     String    @unique
+  email       String    @unique
+  name        String?
+  plan        Plan      @default(FREE)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  products    Product[]
+  decisions   Decision[]
+  exports     Export[]
+}
+
+enum Plan {
+  FREE
+  PRO
+  TEAM
+}
+
+model Product {
+  id            String    @id @default(cuid())
+  userId        String
+  user          User      @relation(fields: [userId], references: [id])
+  name          String
+  brief         String    @db.Text
+  architecture  Json?     // Generated product architecture
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  flows         Flow[]
+  designSystem  DesignSystem?
+  decisions     Decision[]
+  exports       Export[]
+
+  @@index([userId])
+}
+
+model Flow {
+  id          String    @id @default(cuid())
+  productId   String
+  product     Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  name        String
+  type        FlowType
+  screens     Json      // Array of screen objects
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([productId])
+}
+
+enum FlowType {
+  ONBOARDING
+  CORE_ACTION
+  SETTINGS
+  ERROR
+  EDGE_CASE
+  CUSTOM
+}
+
+model DesignSystem {
+  id            String    @id @default(cuid())
+  productId     String    @unique
+  product       Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+  brandInputs   Json      // Brand form inputs
+  colorTokens   Json      // Full token output
+  typography    Json
+  spacing       Json
+  components    Json      // Component specs
+  cssExport     String?   @db.Text
+  tailwindExport String?  @db.Text
+  tokensJson    Json?
+  figmaGuide    String?   @db.Text
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Decision {
+  id          String          @id @default(cuid())
+  productId   String
+  product     Product         @relation(fields: [productId], references: [id], onDelete: Cascade)
+  userId      String
+  user        User            @relation(fields: [userId], references: [id])
+  type        DecisionType
+  statement   String          @db.Text
+  rationale   String?         @db.Text
+  source      DecisionSource  @default(MANUAL)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  @@index([productId])
+}
+
+enum DecisionType {
+  ARCHITECTURE
+  DESIGN
+  FEATURE
+  STRATEGY
+  RESEARCH
+}
+
+enum DecisionSource {
+  AUTO   // Logged by Forge automatically
+  MANUAL // Added by user
+}
+
+model Export {
+  id          String      @id @default(cuid())
+  productId   String
+  product     Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+  type        ExportType
+  format      String      // "md", "css", "json", "tailwind", "pdf"
+  fileUrl     String?     // Cloudflare R2 URL
+  shareToken  String?     @unique
+  shareExpiry DateTime?
+  createdAt   DateTime    @default(now())
+
+  @@index([productId])
+}
+
+enum ExportType {
+  PRD
+  FLOWS
+  DESIGN_SYSTEM
+  DEV_DOCS
+  DECISIONS
+}
