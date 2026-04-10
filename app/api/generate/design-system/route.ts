@@ -2,6 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import Anthropic from "@anthropic-ai/sdk";
 import { DESIGN_SYSTEM_SYSTEM_PROMPT, getDesignSystemPrompt } from "@/lib/ai/prompts/design-system";
 
+export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
 const anthropic = new Anthropic({
