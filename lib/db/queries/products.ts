@@ -67,3 +67,26 @@ export async function saveDesignSystem(productId: string, data: { brandInputs: a
     }
   })
 }
+
+export async function getDecisionsByProductId(productId: string) {
+  return await prisma.decision.findMany({
+    where: { productId },
+    orderBy: { createdAt: "desc" }
+  })
+}
+
+export async function createDecision(userId: string, productId: string, data: { type: any, statement: string, rationale?: string, source?: any }) {
+  const user = await prisma.user.findUnique({ where: { clerkId: userId } })
+  if (!user) throw new Error("User not found")
+
+  return await prisma.decision.create({
+    data: {
+      productId,
+      userId: user.id,
+      type: data.type,
+      statement: data.statement,
+      rationale: data.rationale,
+      source: data.source || "MANUAL",
+    }
+  })
+}
