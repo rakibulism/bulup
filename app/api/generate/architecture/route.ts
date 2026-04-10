@@ -3,7 +3,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { ARCHITECTURE_SYSTEM_PROMPT, getArchitecturePrompt } from "@/lib/ai/prompts/architecture";
 
 // Use edge runtime for streaming support and lower latency
-export const runtime = "edge";
+export const maxDuration = 60;
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY || "",

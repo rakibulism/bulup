@@ -3,7 +3,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { BRAIN_SYSTEM_PROMPT, getBrainPrompt } from "@/lib/ai/prompts/brain";
 import { prisma } from "@/lib/db/prisma";
 
-export const runtime = "edge";
+export const maxDuration = 60;
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY || "",
