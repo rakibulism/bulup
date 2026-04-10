@@ -20,7 +20,9 @@ const MOCK_ARCHITECTURE = {
   coreFeatures: [{ name: "Email Outreach", priority: "High" }]
 }
 
-export default function FlowsPage() {
+import { Suspense } from "react"
+
+function FlowContent() {
   const searchParams = useSearchParams()
   const productId = searchParams.get("productId")
   
@@ -117,8 +119,8 @@ export default function FlowsPage() {
 
              <section className="space-y-4">
                 <div className="flex items-center gap-2 text-text-tertiary">
-                  <LayoutGrid className="h-4 w-4" />
-                  <h4 className="text-label-sm font-bold uppercase tracking-widest">Screen Specification</h4>
+                   <LayoutGrid className="h-4 w-4" />
+                   <h4 className="text-label-sm font-bold uppercase tracking-widest">Screen Specification</h4>
                 </div>
                 <ScreenDetail screen={result[activeFlowIndex].screens[activeScreenIndex]} />
              </section>
@@ -126,6 +128,18 @@ export default function FlowsPage() {
         </div>
       )}
     </div>
+  )
+}
+
+export default function FlowsPage() {
+  return (
+    <Suspense fallback={
+       <div className="flex items-center justify-center p-24">
+         <div className="animate-spin h-8 w-8 border-4 border-brand-default border-t-transparent rounded-full" />
+       </div>
+    }>
+      <FlowContent />
+    </Suspense>
   )
 }
 

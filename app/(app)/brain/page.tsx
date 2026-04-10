@@ -36,7 +36,9 @@ const MOCK_DECISIONS = [
   }
 ]
 
-export default function BrainPage() {
+import { Suspense } from "react"
+
+function BrainContent() {
   const searchParams = useSearchParams()
   const productId = searchParams.get("productId") || "mock-product"
 
@@ -87,5 +89,17 @@ export default function BrainPage() {
         </SegmentedControl>
       </div>
     </div>
+  )
+}
+
+export default function BrainPage() {
+  return (
+    <Suspense fallback={
+       <div className="flex items-center justify-center p-24">
+         <div className="animate-spin h-8 w-8 border-4 border-brand-default border-t-transparent rounded-full" />
+       </div>
+    }>
+      <BrainContent />
+    </Suspense>
   )
 }
