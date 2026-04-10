@@ -1,6 +1,3 @@
-"use client"
-
-// Wait, I should make this a server action file "use server"
 "use server"
 
 import { auth } from "@clerk/nextjs/server"
