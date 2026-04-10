@@ -18,15 +18,35 @@ export async function createProduct(userId: string, data: { name: string, brief:
   })
 }
 
-export async function getProducts(userId: string) {
-  const user = await prisma.user.findUnique({
-    where: { clerkId: userId }
+export async function getFlowsByProductId(productId: string) {
+  return await prisma.flow.findMany({
+    where: { productId },
+    orderBy: { createdAt: "asc" }
+  })
+}
+
+export async function saveFlows(productId: string, flows: any[]) {
+  // Simple approach: delete existing and create new for MVP
+  await prisma.flow.deleteMany({
+    where: { productId }
   })
 
-  if (!user) return []
+  return await prisma.flow.createMany({
+    data: flows.map(f => ({
+      productId,
+      name: f.name,
+      type: f.type,
+      screens: f.screens,
+    }))
+  })
+}
 
-  return await prisma.product.findMany({
-    where: { userId: user.id },
-    orderBy: { updatedAt: "desc" }
+export async function getProductById(productId: string, userId: string) {
+  const user = await prisma.user.findUnique({ where: { clerkId: userId } })
+  if (!user) return null
+
+  return await prisma.product.findUnique({
+    where: { id: productId, userId: user.id },
+    include: { flows: true }
   })
 }
