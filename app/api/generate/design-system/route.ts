@@ -11,7 +11,8 @@ const anthropic = new Anthropic({
 
 export async function POST(req: Request) {
   try {
-    const { userId } = await auth();
+    // const { userId } = await auth();
+    const userId = "mock-user-id";
     if (!userId) return new Response("Unauthorized", { status: 401 });
 
     const body = await req.json();

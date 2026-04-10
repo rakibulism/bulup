@@ -5,7 +5,8 @@ import { createProduct as createProductDB } from "@/lib/db/queries/products"
 import { revalidatePath } from "next/cache"
 
 export async function saveProduct(data: { name: string, brief: string, architecture: any }) {
-  const { userId } = await auth()
+  // const { userId } = await auth()
+  const userId = "mock-user-id"
   if (!userId) throw new Error("Unauthorized")
 
   try {

@@ -5,7 +5,8 @@ import { createDecision as createDbDecision } from "@/lib/db/queries/products"
 import { revalidatePath } from "next/cache"
 
 export async function addDecision(productId: string, data: { type: any, statement: string, rationale?: string }) {
-  const { userId } = await auth()
+  // const { userId } = await auth()
+  const userId = "mock-user-id"
   if (!userId) throw new Error("Unauthorized")
 
   try {

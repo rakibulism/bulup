@@ -3,8 +3,8 @@
 import * as React from "react"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { UserButton } from "@clerk/nextjs"
 import { Separator } from "@/components/ui/separator"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export interface AppHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string
@@ -38,18 +38,10 @@ export function AppHeader({ title, actions, className, ...props }: AppHeaderProp
           </div>
         )}
         <Separator orientation="vertical" className="h-6 mx-1 hidden md:block" />
-        <UserButton 
-          afterSignOutUrl="/"
-          appearance={{
-            elements: {
-              avatarBox: "h-8 w-8 rounded-full border border-border-strong focus:ring-2 focus:ring-brand-default",
-              userButtonPopoverCard: "bg-bg-surface2 border border-border-default shadow-xl",
-              userButtonPopoverActionButton: "hover:bg-bg-surface3 text-text-primary",
-              userButtonPopoverActionButtonText: "text-text-primary",
-              userButtonPopoverFooter: "hidden"
-            }
-          }}
-        />
+        <Avatar className="h-8 w-8 border border-border-strong">
+          <AvatarImage src="" />
+          <AvatarFallback className="bg-bg-surface1 text-text-secondary text-xs">U</AvatarFallback>
+        </Avatar>
       </div>
     </header>
   )

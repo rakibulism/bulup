@@ -19,11 +19,11 @@ export default function LandingPage() {
           <Link href="/blog" className="hover:text-text-primary transition-colors">Blog</Link>
         </div>
         <div className="flex items-center gap-4">
-          <Link href="/sign-in">
-            <Button variant="ghost" size="sm">Sign In</Button>
+          <Link href="/dashboard">
+            <Button variant="ghost" size="sm">Dashboard</Button>
           </Link>
-          <Link href="/sign-up">
-            <Button size="sm">Start for free</Button>
+          <Link href="/workshop">
+            <Button size="sm">Get Started</Button>
           </Link>
         </div>
       </nav>
@@ -40,8 +40,8 @@ export default function LandingPage() {
           Forge turns raw ideas into structured product systems. Architecture, UX flows, design systems, and dev docs — ready before your team opens a single tool.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
-          <Link href="/sign-up">
-            <Button size="lg">Start for free</Button>
+          <Link href="/workshop">
+            <Button size="lg">Get Started</Button>
           </Link>
           <Button variant="secondary" size="lg">See how it works →</Button>
         </div>
