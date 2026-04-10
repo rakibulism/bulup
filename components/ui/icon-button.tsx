@@ -3,8 +3,9 @@
 import * as React from "react"
 import { Button, ButtonProps } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { cn } from "@/lib/utils"
 
-export interface IconButtonProps extends ButtonProps {
+export interface IconButtonProps extends Omit<ButtonProps, "children"> {
   icon: React.ReactNode
   label: string // Required for accessibility, used as tooltip content
   tooltipSide?: "top" | "right" | "bottom" | "left"
@@ -17,6 +18,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
       default: "h-9 w-9 px-0",
       sm: "h-8 w-8 px-0",
       lg: "h-10 w-10 px-0",
+      icon: "h-9 w-9",
     }
 
     return (
@@ -25,8 +27,8 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
           <TooltipTrigger asChild>
             <Button
               ref={ref}
-              className={`${sizeMap[size]} ${className || ''}`}
-              size={size}
+              className={cn(sizeMap[size as keyof typeof sizeMap], className)}
+              variant={props.variant}
               {...props}
               aria-label={label}
             >

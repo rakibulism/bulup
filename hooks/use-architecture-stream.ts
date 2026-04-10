@@ -4,6 +4,11 @@ import { useState } from "react"
 
 export type GenerationStatus = "idle" | "loading" | "success" | "error"
 
+export interface ProgressStep {
+  message: string
+  timestamp: string
+}
+
 export interface ArchitectureResult {
   productName: string
   concept: string
@@ -37,6 +42,7 @@ export function useArchitectureStream() {
       if (!response.ok) throw new Error("Failed to start generation")
 
       const reader = response.body?.getReader()
+      if (!reader) throw new Error("Could not initialize response reader")
       const decoder = new TextDecoder()
 
       if (!reader) throw new Error("No response body")

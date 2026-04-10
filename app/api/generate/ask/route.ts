@@ -43,7 +43,7 @@ export async function POST(req: Request) {
           });
 
           for await (const chunk of response) {
-            if (chunk.type === "content_block_delta" && chunk.delta.type === "text") {
+            if (chunk.type === "content_block_delta" && chunk.delta.type === "text_delta") {
               controller.enqueue(encoder.encode(chunk.delta.text));
             }
           }

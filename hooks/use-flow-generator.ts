@@ -21,9 +21,10 @@ export function useFlowGenerator() {
         body: JSON.stringify({ architecture }),
       })
 
-      if (!response.ok) throw new Error("Generation failed")
+      if (!response.ok) throw new Error("Flow generation failed")
 
       const reader = response.body?.getReader()
+      if (!reader) throw new Error("Could not initialize response reader")
       const decoder = new TextDecoder()
       let buffer = ""
 

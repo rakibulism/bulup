@@ -24,6 +24,7 @@ export function useDesignSystemGenerator() {
       if (!response.ok) throw new Error("Design generation failed")
 
       const reader = response.body?.getReader()
+      if (!reader) throw new Error("Could not initialize response reader")
       const decoder = new TextDecoder()
       let buffer = ""
 

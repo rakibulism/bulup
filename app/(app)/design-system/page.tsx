@@ -47,7 +47,7 @@ export default function DesignSystemPage() {
       />
 
       {status === "idle" && (
-        <BrandInputForm onSubmit={generate} isLoading={status === "loading"} />
+        <BrandInputForm onSubmit={generate} isLoading={false} />
       )}
 
       {status === "loading" && (

@@ -25,6 +25,7 @@ export function AskPanel({ productId }: { productId: string }) {
       if (!response.ok) throw new Error("Brain unreachable")
 
       const reader = response.body?.getReader()
+      if (!reader) throw new Error("Could not initialize response reader")
       const decoder = new TextDecoder()
 
       while (true) {

@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils"
 export interface StatusChipProps extends BadgeProps {
   icon?: React.ReactNode
   label: string
+  size?: "sm" | "md" | "lg"
 }
 
 function StatusChip({ icon, label, className, ...props }: StatusChipProps) {
