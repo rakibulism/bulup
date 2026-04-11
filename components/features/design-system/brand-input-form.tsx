@@ -30,7 +30,7 @@ export function BrandInputForm({
     <div className="flex flex-col gap-8 max-w-xl mx-auto py-12">
       <div className="text-center space-y-2">
         <h2 className="text-display-lg font-bold text-text-primary">Define your Brand DNA</h2>
-        <p className="text-body-lg text-text-secondary">Forge turns your vision into a precise design system.</p>
+        <p className="text-body-lg text-text-secondary">Bulup turns your vision into a precise design system.</p>
       </div>
 
       <div className="space-y-6 bg-bg-surface1 p-8 rounded-2xl border border-border-default">
@@ -83,7 +83,7 @@ export function BrandInputForm({
           onClick={() => onSubmit(data)}
           disabled={isLoading || !data.name || !data.personality}
         >
-          {isLoading ? "Generating Design System..." : "Forge Design System"}
+          {isLoading ? "Generating Design System..." : "Bulup Design System"}
           {!isLoading && <Sparkles className="h-5 w-5" />}
         </Button>
       </div>

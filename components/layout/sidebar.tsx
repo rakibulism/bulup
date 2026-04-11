@@ -46,7 +46,7 @@ export function Sidebar() {
               <div className="h-8 w-8 rounded-lg bg-brand-default flex items-center justify-center text-text-primary">
                 F
               </div>
-              <span>FORGE</span>
+              <span>BULUP</span>
             </Link>
           )}
           {isCollapsed && (

@@ -28,7 +28,7 @@ export function useArchitectureStream() {
 
   const generate = async (brief: string) => {
     setStatus("loading")
-    setProgress("Connecting to Forge AI...")
+    setProgress("Connecting to Bulup AI...")
     setResult(null)
     setError(null)
 

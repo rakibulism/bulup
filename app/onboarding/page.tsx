@@ -10,7 +10,7 @@ export default function OnboardingPage() {
           <div className="h-8 w-8 rounded-lg bg-brand-default flex items-center justify-center text-text-primary">
             F
           </div>
-          <span className="tracking-tight">FORGE</span>
+          <span className="tracking-tight">BULUP</span>
         </div>
       </header>
 
@@ -21,7 +21,7 @@ export default function OnboardingPage() {
       {/* Basic footer for the wizard */}
       <footer className="h-16 flex items-center justify-center px-8 border-t border-border-subtle">
         <p className="text-caption text-text-tertiary">
-          Forge Product Intelligence — v1.0.0
+          Bulup Product Intelligence — v1.0.0
         </p>
       </footer>
     </div>

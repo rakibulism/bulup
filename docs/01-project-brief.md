@@ -1,18 +1,18 @@
-# Forge — Project Brief
+# Bulup — Project Brief
 **Version:** 1.0
 **Status:** Active
 **Last Updated:** April 2026
 
 ---
 
-## What Is Forge?
+## What Is Bulup?
 
-Forge is an AI-powered **product intelligence platform**.
+Bulup is an AI-powered **product intelligence platform**.
 
 It is not a code generator. It is not another vibe coding tool.
 It is the **thinking layer** that sits upstream of all coding tools — the platform where founders, product designers, and builders shape their product before a single line of code is written.
 
-You bring an idea. Forge gives you a product.
+You bring an idea. Bulup gives you a product.
 
 ---
 
@@ -40,25 +40,25 @@ The current market is split into two camps:
 
 Everyone builds code tools. Nobody builds a product intelligence layer.
 
-That's Forge.
+That's Bulup.
 
 ---
 
 ## The Solution
 
-Forge is the AI-powered platform that turns a raw product idea into a fully structured, dev-and-design-ready product system.
+Bulup is the AI-powered platform that turns a raw product idea into a fully structured, dev-and-design-ready product system.
 
-**The Forge loop:**
+**The Bulup loop:**
 
 ```
 Idea → Product Architecture → UX Flows → Design System → Handoff Docs → Build
 ```
 
-Everything Forge produces is:
+Everything Bulup produces is:
 - Ready for your design team to open in Figma
 - Ready for your dev team to feed into Cursor or Claude Code
-- Documented and version-controlled inside Forge
-- Remembered — Forge knows your product's full history
+- Documented and version-controlled inside Bulup
+- Remembered — Bulup knows your product's full history
 
 ---
 
@@ -68,37 +68,37 @@ Everything Forge produces is:
 Non-technical or semi-technical. Building a SaaS product. Has an idea, maybe a deck, maybe some rough sketches. Needs to think clearly before spending money on dev hours. Values structure and speed equally.
 
 ### Secondary — The Product Designer
-Working at a startup or as a freelancer. Needs to move from brief to full UX system fast. Uses Figma for execution but needs Forge for thinking and architecture.
+Working at a startup or as a freelancer. Needs to move from brief to full UX system fast. Uses Figma for execution but needs Bulup for thinking and architecture.
 
 ### Tertiary — The Technical Co-founder / CTO
-Technically strong but time-poor. Uses Forge to generate the product system so their dev team has something concrete to build from. Feeds Forge output into Cursor or Claude Code.
+Technically strong but time-poor. Uses Bulup to generate the product system so their dev team has something concrete to build from. Feeds Bulup output into Cursor or Claude Code.
 
 ---
 
 ## Positioning Statement
 
-**For** founders and product builders who are tired of building the wrong thing in the wrong order, **Forge** is the AI product intelligence platform that transforms raw ideas into structured, design-system-ready, dev-handoff-ready product systems — with memory that evolves alongside your product.
+**For** founders and product builders who are tired of building the wrong thing in the wrong order, **Bulup** is the AI product intelligence platform that transforms raw ideas into structured, design-system-ready, dev-handoff-ready product systems — with memory that evolves alongside your product.
 
-**Unlike** vibe coding tools that generate code fast and break early, or engineering agents that need a developer to drive, **Forge sits upstream** — it thinks before anyone builds.
+**Unlike** vibe coding tools that generate code fast and break early, or engineering agents that need a developer to drive, **Bulup sits upstream** — it thinks before anyone builds.
 
 ---
 
 ## Core Value Propositions
 
 1. **From idea to product system in hours, not weeks**
-   Skip the chaos. Forge structures your idea into a real product architecture with user flows, UX specs, and design system — all from a plain-English brief.
+   Skip the chaos. Bulup structures your idea into a real product architecture with user flows, UX specs, and design system — all from a plain-English brief.
 
 2. **Design intelligence, not just code generation**
-   Forge generates real design systems — tokens, components, spacing, typography, color — that your team can use immediately. Not a list of components. An actual system.
+   Bulup generates real design systems — tokens, components, spacing, typography, color — that your team can use immediately. Not a list of components. An actual system.
 
-3. **Product memory that never forgets**
-   Every decision you make in Forge is logged. Every feature, every revision, every "why we chose this" — stored, searchable, and available when your team needs context six months from now.
+3. **Product memory that never bulupts**
+   Every decision you make in Bulup is logged. Every feature, every revision, every "why we chose this" — stored, searchable, and available when your team needs context six months from now.
 
 4. **Handoff-first by design**
-   Everything Forge produces is export-ready. PRD exports, Figma-ready specs, dev documentation, design tokens — your team doesn't need to ask you what you meant.
+   Everything Bulup produces is export-ready. PRD exports, Figma-ready specs, dev documentation, design tokens — your team doesn't need to ask you what you meant.
 
 5. **Founder-level guidance**
-   Forge doesn't just execute. It thinks. It tells you when a feature is out of scope for your MVP. It flags UX inconsistencies. It suggests what to cut. It acts like a senior product advisor, not a code monkey.
+   Bulup doesn't just execute. It thinks. It tells you when a feature is out of scope for your MVP. It flags UX inconsistencies. It suggests what to cut. It acts like a senior product advisor, not a code monkey.
 
 ---
 
@@ -143,4 +143,4 @@ Technically strong but time-poor. Uses Forge to generate the product system so t
 
 ---
 
-*Document version 1.0 — Forge pre-production*
+*Document version 1.0 — Bulup pre-production*

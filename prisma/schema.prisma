@@ -106,7 +106,7 @@ enum DecisionType {
 }
 
 enum DecisionSource {
-  AUTO   // Logged by Forge automatically
+  AUTO   // Logged by Bulup automatically
   MANUAL // Added by user
 }
 

@@ -1,4 +1,4 @@
-# Forge — Pages & Interactive Flows
+# Bulup — Pages & Interactive Flows
 **Version:** 1.0
 **For:** Design Team
 **Last Updated:** April 2026
@@ -51,7 +51,7 @@ Sidebar collapses to 64px icon-only mode. Preference saved per user.
 
 ## 01 — Landing Page
 
-**Purpose:** Communicate Forge's value proposition and convert visitors to sign-ups.
+**Purpose:** Communicate Bulup's value proposition and convert visitors to sign-ups.
 **Layout:** Full-width, single-column, scroll narrative.
 
 ### Sections
@@ -65,9 +65,9 @@ Sidebar collapses to 64px icon-only mode. Preference saved per user.
 **B. Hero**
 - Eyebrow label: "Product Intelligence Platform"
 - Headline: "Think before you build."
-- Sub: Forge turns raw ideas into structured product systems. Architecture, UX flows, design systems, and dev docs — ready before your team opens a single tool.
+- Sub: Bulup turns raw ideas into structured product systems. Architecture, UX flows, design systems, and dev docs — ready before your team opens a single tool.
 - CTAs: [Start for free] [See how it works →]
-- Visual: UI screenshot or abstract diagram of Forge output (not a person, not a stock photo)
+- Visual: UI screenshot or abstract diagram of Bulup output (not a person, not a stock photo)
 
 **C. Feature Sections (4 blocks)**
 Each block alternates: text left / visual right, then text right / visual left.
@@ -77,7 +77,7 @@ Each block alternates: text left / visual right, then text right / visual left.
 4. Handoff Center
 
 **D. Positioning Statement**
-Simple 2-column layout: "What Forge is not" vs "What Forge is"
+Simple 2-column layout: "What Bulup is not" vs "What Bulup is"
 
 **E. Pricing**
 3-column card layout: Free / Pro / Team
@@ -101,7 +101,7 @@ Simple 2-column layout: "What Forge is not" vs "What Forge is"
 **Layout:** Centered card on near-black background.
 
 ### Components
-- Forge logo (top center)
+- Bulup logo (top center)
 - Page title: "Welcome back"
 - Email input
 - Password input
@@ -123,11 +123,11 @@ Simple 2-column layout: "What Forge is not" vs "What Forge is"
 
 ## 03 — Sign Up
 
-**Purpose:** Create a new Forge account.
+**Purpose:** Create a new Bulup account.
 **Layout:** Centered card on near-black background.
 
 ### Components
-- Forge logo
+- Bulup logo
 - Page title: "Create your account"
 - Email input
 - Password input (with strength indicator — minimal, just a 4-bar indicator)
@@ -183,7 +183,7 @@ Simple 2-column layout: "What Forge is not" vs "What Forge is"
 - Headline: "Here's your product."
 - Renders the architecture output (same as Idea Workshop output view)
 - [Save this product] primary
-- Product name input (pre-filled from Forge's interpretation, editable)
+- Product name input (pre-filled from Bulup's interpretation, editable)
 - [Edit with AI →] secondary
 
 ---
@@ -373,8 +373,8 @@ Tabs: Colors / Typography / Spacing / Components
 
 ### Ask Your Product
 - When search input is used as a question (contains "?"):
-  - Forge shifts to AI answer mode
-  - Answer card appears above results: "Based on your product decisions, here's what Forge found:"
+  - Bulup shifts to AI answer mode
+  - Answer card appears above results: "Based on your product decisions, here's what Bulup found:"
   - Source cards linked below the answer
 
 ### Add Decision
@@ -397,7 +397,7 @@ Tabs: Colors / Typography / Spacing / Components
 
 ## 10 — Handoff Center
 
-**Purpose:** Export all Forge outputs for team consumption.
+**Purpose:** Export all Bulup outputs for team consumption.
 **Layout:** AppShell + Clean export list (single column, centered, max 720px).
 
 ### Components
@@ -492,18 +492,18 @@ Open Product → Design System Studio → Fill brand inputs
 → Generate → Review tokens → Review components → Export (CSS/Tailwind/JSON/Figma guide)
 ```
 
-### Flow E — Team Handoff (No Forge Account)
+### Flow E — Team Handoff (No Bulup Account)
 ```
-Forge user → Handoff Center → [Generate link] → Copy link
+Bulup user → Handoff Center → [Generate link] → Copy link
 → Share with team → Team opens read-only view (no login required)
 ```
 
 ### Flow F — Product Brain Query
 ```
 Dashboard → Open Product → Product Brain → Search "why did we..."
-→ Forge returns AI answer grounded in stored decisions → View source decisions
+→ Bulup returns AI answer grounded in stored decisions → View source decisions
 ```
 
 ---
 
-*Pages & Flows v1.0 — Forge. Every screen has a purpose. Every state is designed.*
+*Pages & Flows v1.0 — Bulup. Every screen has a purpose. Every state is designed.*

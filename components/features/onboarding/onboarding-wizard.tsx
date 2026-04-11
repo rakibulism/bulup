@@ -73,7 +73,7 @@ export function OnboardingWizard() {
                 Your workspace is ready.
               </h1>
               <p className="text-body-lg text-text-secondary">
-                Forge helps you architect solid products from raw ideas. <br/>
+                Bulup helps you architect solid products from raw ideas. <br/>
                 Let's set up your first product. It takes about 3 minutes.
               </p>
               <div className="flex flex-col gap-4 pt-4">
@@ -165,7 +165,7 @@ export function OnboardingWizard() {
 
               <div className="space-y-4">
                  <h2 className="text-display-lg font-bold text-text-primary">
-                    Forge has defined <span className="text-brand-text">{productName}</span>
+                    Bulup has defined <span className="text-brand-text">{productName}</span>
                  </h2>
                  <div className="rounded-xl border border-border-default bg-bg-surface1 p-6 text-text-secondary">
                     {/* Simplified placeholder for architecture view */}

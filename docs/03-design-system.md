@@ -1,4 +1,4 @@
-# Forge — Design System
+# Bulup — Design System
 **Version:** 1.0
 **Status:** Production
 **Last Updated:** April 2026
@@ -9,10 +9,10 @@
 
 **Good design is what you remove, not what you add.**
 
-Forge's design system is built on four convictions:
+Bulup's design system is built on four convictions:
 
 1. **Reduction first** — every token, every component, every pattern exists to serve a function. No decoration. No gradients. No noise.
-2. **Dark by default** — Forge is a professional tool. The dark aesthetic communicates seriousness, focus, and precision.
+2. **Dark by default** — Bulup is a professional tool. The dark aesthetic communicates seriousness, focus, and precision.
 3. **Type does the work** — hierarchy is built through typography before color. If the layout breaks without color, the type isn't working.
 4. **States are not optional** — every component is designed for default, hover, focus, active, loading, error, empty, and disabled.
 
@@ -351,4 +351,4 @@ xl:   1280px
 
 ---
 
-*Design System v1.0 — Forge. All tokens map directly to Figma variables.*
+*Design System v1.0 — Bulup. All tokens map directly to Figma variables.*

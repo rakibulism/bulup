@@ -15,7 +15,7 @@ export default function WorkshopPage() {
   const { generate, status, progress, result, reset } = useArchitectureStream()
   const [isSaving, setIsSaving] = React.useState(false)
 
-  const handleForge = () => {
+  const handleBulup = () => {
     if (brief.trim().length < 20) return
     generate(brief)
   }
@@ -96,11 +96,11 @@ export default function WorkshopPage() {
           <Button 
             size="lg" 
             className="w-full gap-3 shadow-xl h-12" 
-            onClick={handleForge}
+            onClick={handleBulup}
             disabled={brief.trim().length < 20 || status === "loading"}
           >
             {status === "loading" ? <Spinner size="sm" /> : <Sparkles className="h-5 w-5" />}
-            {status === "loading" ? "Forging Product Architecture..." : "Forge Product Architecture"}
+            {status === "loading" ? "Generating Product Architecture..." : "Bulup Product Architecture"}
           </Button>
         </div>
 
@@ -111,9 +111,9 @@ export default function WorkshopPage() {
               <div className="h-16 w-16 rounded-full bg-bg-surface2 flex items-center justify-center text-text-tertiary mb-6">
                  <Sparkles className="h-8 w-8" />
               </div>
-              <h3 className="text-heading-md font-semibold text-text-primary mb-2">Ready to Forge</h3>
+              <h3 className="text-heading-md font-semibold text-text-primary mb-2">Ready to Bulup</h3>
               <p className="text-body-sm text-text-secondary max-w-xs">
-                Enter your product brief on the left. Forge AI will generate a complete structural blueprint for you.
+                Enter your product brief on the left. Bulup AI will generate a complete structural blueprint for you.
               </p>
             </div>
           )}

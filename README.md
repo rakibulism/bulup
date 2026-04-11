@@ -1,6 +1,6 @@
-# Forge — AI Product Orchestration Platform
+# Bulup — AI Product Orchestration Platform
 
-Forge is a high-agency product engineering tool designed to transform raw ideas into production-ready specifications, architectures, and design systems using Anthropic Claude.
+Bulup is a high-agency product engineering tool designed to transform raw ideas into production-ready specifications, architectures, and design systems using Anthropic Claude.
 
 ## 🚀 Key Features
 
@@ -56,7 +56,7 @@ Forge is a high-agency product engineering tool designed to transform raw ideas 
 
 ## 📐 Design Philosophy
 
-Forge follows a **Reductionist Dark Mode** aesthetic.
+Bulup follows a **Reductionist Dark Mode** aesthetic.
 - **Primary Accent**: Indigo Violet (#6E63F5)
 - **Background**: Near Black (#0C0C0C)
 - **Typography**: Inter (UI) and JetBrains Mono (Data/Tokens)

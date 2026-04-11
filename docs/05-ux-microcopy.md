@@ -1,4 +1,4 @@
-# Forge — UX Microcopy
+# Bulup — UX Microcopy
 **Version:** 1.0
 **For:** Design + Content Team
 **Last Updated:** April 2026
@@ -7,9 +7,9 @@
 
 ## Voice & Tone
 
-**Forge speaks like:** a senior product advisor who has shipped many products. Clear. Direct. Minimal. Confident without arrogance. No filler phrases. No hype.
+**Bulup speaks like:** a senior product advisor who has shipped many products. Clear. Direct. Minimal. Confident without arrogance. No filler phrases. No hype.
 
-**Forge never says:**
+**Bulup never says:**
 - "Unlock the power of..."
 - "Supercharge your workflow"
 - "Seamlessly integrate..."
@@ -17,7 +17,7 @@
 - "Oops! Something went wrong" (vague error language)
 - "Are you sure?" (for reversible actions)
 
-**Forge always says:**
+**Bulup always says:**
 - What the action does, not how exciting it is
 - Specific error context, not generic failure messages
 - One clear instruction, not a paragraph of explanation
@@ -30,7 +30,7 @@
 ### Hero
 ```
 Headline:       Think before you build.
-Sub-headline:   Forge turns raw ideas into structured product systems.
+Sub-headline:   Bulup turns raw ideas into structured product systems.
                 Architecture, UX flows, design systems, and dev docs —
                 ready before your team opens a single tool.
 CTA primary:    Start for free
@@ -43,7 +43,7 @@ CTA secondary:  See how it works
 ```
 Label:          Idea Workshop
 Headline:       From idea to product architecture in minutes.
-Body:           Describe your product in plain English. Forge returns a
+Body:           Describe your product in plain English. Bulup returns a
                 structured architecture — features, user roles, flows, and a
                 scoped MVP — ready to hand to your team.
 CTA:            Try the Workshop
@@ -53,7 +53,7 @@ CTA:            Try the Workshop
 ```
 Label:          Design System Studio
 Headline:       A real design system. Not a color palette.
-Body:           Forge generates complete token architecture, typography
+Body:           Bulup generates complete token architecture, typography
                 scale, component specs, and export-ready CSS, Tailwind, and
                 Figma variables. In one generation.
 CTA:            See a sample output
@@ -82,7 +82,7 @@ CTA:            See export formats
 ```
 Headline:       Not a code tool.
 Body:           Lovable, Cursor, Claude Code — they all answer "how do I build it?"
-                Forge answers "what should I build, and how should it work?"
+                Bulup answers "what should I build, and how should it work?"
                 That's a different question.
 ```
 
@@ -125,7 +125,7 @@ Headline:       Describe your product.
 Placeholder:    "A SaaS tool that helps freelancers track client projects and
                 invoice automatically..."
 Helper text:    Plain English is fine. The more specific you are, the better
-                Forge understands your product.
+                Bulup understands your product.
 CTA:            Continue
 Character count: [n] / 2000
 ```
@@ -144,7 +144,7 @@ Progress steps:
 ### Step 4 — Architecture Ready
 ```
 Headline:       Here's your product.
-Body:           Forge has structured your idea into a product architecture.
+Body:           Bulup has structured your idea into a product architecture.
                 Review it, edit anything that's off, and save it when ready.
 CTA primary:    Save this product
 CTA secondary:  Edit with AI
@@ -152,7 +152,7 @@ CTA secondary:  Edit with AI
 
 ### Onboarding Complete
 ```
-Headline:       [Product name] is live in Forge.
+Headline:       [Product name] is live in Bulup.
 Body:           Now let's go deeper. Generate UX flows, build your design
                 system, or start your product memory.
 CTA:            Explore your product
@@ -286,7 +286,7 @@ CTA:            Generate
 ```
 Field: Brand name
   Label:       Brand name
-  Placeholder: Forge
+  Placeholder: Bulup
 
 Field: Personality (multi-select, max 5)
   Options: Professional, Minimal, Bold, Playful, Technical, Warm, Luxurious, Sharp, Clean, Innovative
@@ -344,7 +344,7 @@ Secondary:      Export all
 ### Empty State
 ```
 Headline:       No decisions logged yet.
-Body:           Every product you build in Forge will be automatically
+Body:           Every product you build in Bulup will be automatically
                 logged here. You can also add decisions manually.
 CTA:            Add a decision
 ```
@@ -374,7 +374,7 @@ Empty answer:   No decisions about this have been logged yet.
 ```
 Decision types: Architecture  /  Design  /  Feature  /  Strategy  /  Research
 Timestamp:      [Day, Date] at [Time]
-Auto-log tag:   Auto-logged by Forge
+Auto-log tag:   Auto-logged by Bulup
 Manual tag:     Added manually
 ```
 
@@ -420,7 +420,7 @@ Decision Log
 ### Shareable Link
 ```
 Label:          Share with your team
-Body:           Generate a read-only link. No Forge account needed to view.
+Body:           Generate a read-only link. No Bulup account needed to view.
 CTA:            Generate link
 Link expiry:    Expires in 30 days
 Copy success:   Link copied →
@@ -433,13 +433,13 @@ Copy success:   Link copied →
 ### Generic (fallback only)
 ```
 ❌ Don't: "Something went wrong."
-✅ Do:    "Forge couldn't generate your architecture. Please try again."
+✅ Do:    "Bulup couldn't generate your architecture. Please try again."
           [Retry]
 ```
 
 ### Network / API
 ```
-"Forge couldn't reach the server. Check your connection and try again."
+"Bulup couldn't reach the server. Check your connection and try again."
 [Try again]
 ```
 
@@ -487,9 +487,9 @@ Link copied →             Link copied. Valid for 30 days.
 ```
 Product Brain:    "A living log of every decision made about this product."
 Design tokens:    "Semantic tokens reference primitive values. Use semantic tokens in components."
-MVP scope:        "Forge's recommendation for what to build first."
-Shareable link:   "Anyone with this link can view your exports. No Forge account required."
-Auto-logged:      "This was automatically captured when Forge generated this content."
+MVP scope:        "Bulup's recommendation for what to build first."
+Shareable link:   "Anyone with this link can view your exports. No Bulup account required."
+Auto-logged:      "This was automatically captured when Bulup generated this content."
 ```
 
 ---
@@ -536,4 +536,4 @@ Danger Zone
 
 ---
 
-*Microcopy v1.0 — Forge. Every word earns its place.*
+*Microcopy v1.0 — Bulup. Every word earns its place.*

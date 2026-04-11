@@ -1,13 +1,13 @@
-# Forge — Designer Guidelines
+# Bulup — Designer Guidelines
 **Version:** 1.0
 **For:** Design Team
 **Last Updated:** April 2026
 
 ---
 
-## Your Job as a Designer on Forge
+## Your Job as a Designer on Bulup
 
-Forge is a professional product intelligence tool used by founders and designers who value precision over decoration. The design must earn trust. Every screen should feel like it was built by someone who has shipped a lot of products and made every mistake already.
+Bulup is a professional product intelligence tool used by founders and designers who value precision over decoration. The design must earn trust. Every screen should feel like it was built by someone who has shipped a lot of products and made every mistake already.
 
 The core design principle:
 
@@ -33,7 +33,7 @@ If you can eliminate a step — eliminate it.
 - Complex sidebar navigation with 20 items
 - Anything with a hero gradient blob
 
-**The Forge aesthetic:**
+**The Bulup aesthetic:**
 - Near-black background (`#0C0C0C`)
 - Crisp text hierarchy (Inter)
 - One accent color (indigo-violet `#6E63F5`) — used sparingly
@@ -182,7 +182,7 @@ For every interactive component, design these states:
 ## Figma File Structure
 
 ```
-Forge Design File
+Bulup Design File
 │
 ├── 🔵 [Cover] — project cover frame
 ├── 📐 [Design System]
@@ -272,4 +272,4 @@ Example: `Dashboard / Default / Expanded Sidebar`
 
 ---
 
-*Designer Guidelines v1.0 — Forge. Keep it clean. Keep it real. Ship it.*
+*Designer Guidelines v1.0 — Bulup. Keep it clean. Keep it real. Ship it.*

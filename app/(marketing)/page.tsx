@@ -11,7 +11,7 @@ export default function LandingPage() {
           <div className="h-8 w-8 rounded-lg bg-brand-default flex items-center justify-center text-text-primary">
             F
           </div>
-          <span>FORGE</span>
+          <span>BULUP</span>
         </div>
         <div className="hidden md:flex items-center gap-8 text-label-md text-text-secondary">
           <Link href="#features" className="hover:text-text-primary transition-colors">Features</Link>
@@ -37,7 +37,7 @@ export default function LandingPage() {
           Think before you build.
         </h1>
         <p className="text-body-lg text-text-secondary mb-10 max-w-2xl">
-          Forge turns raw ideas into structured product systems. Architecture, UX flows, design systems, and dev docs — ready before your team opens a single tool.
+          Bulup turns raw ideas into structured product systems. Architecture, UX flows, design systems, and dev docs — ready before your team opens a single tool.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
           <Link href="/workshop">
@@ -53,7 +53,7 @@ export default function LandingPage() {
            <h2 className="text-display-lg font-bold text-text-primary mb-6">Not a code tool.</h2>
            <p className="text-body-lg text-text-secondary">
             Lovable, Cursor, Claude Code — they all answer "how do I build it?" <br/>
-            Forge answers <span className="text-text-primary font-semibold">"what should I build, and how should it work?"</span> <br/>
+            Bulup answers <span className="text-text-primary font-semibold">"what should I build, and how should it work?"</span> <br/>
             That's a different question.
            </p>
         </div>
@@ -67,9 +67,9 @@ export default function LandingPage() {
                 <div className="h-6 w-6 rounded-md bg-brand-default flex items-center justify-center text-text-primary text-xs">
                   F
                 </div>
-                <span>FORGE</span>
+                <span>BULUP</span>
               </div>
-              <p className="text-caption text-text-tertiary">© 2026 Forge. All rights reserved.</p>
+              <p className="text-caption text-text-tertiary">© 2026 Bulup. All rights reserved.</p>
            </div>
            <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
               <div className="flex flex-col gap-3">

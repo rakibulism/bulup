@@ -17,17 +17,17 @@ It must NOT sound like: a chatbot, a code tool, a design plugin.
 
 ---
 
-### 🥇 FORGE — Recommended
+### 🥇 BULUP — Recommended
 
-**forge.so** or **tryforge.io** or **useforge.co**
+**bulup.so** or **trybulup.io** or **usebulup.co**
 
-> Forge: a place where raw material is shaped into something real under pressure and skill.
+> Bulup: a place where raw material is shaped into something real under pressure and skill.
 
 - Short. One syllable. Memorable.
 - Tactile — it implies craft, not automation
 - "Forging a product" is a natural phrase
 - Doesn't sound like a code tool or a design plugin
-- Works as both noun and verb: "We forged this in Forge."
+- Works as both noun and verb: "We bulupd this in Bulup."
 - Tagline potential: *"Where products are made."* / *"Think. Shape. Ship."*
 
 **Verdict:** Strong, clean, category-defining. This is the name.
@@ -45,7 +45,7 @@ It must NOT sound like: a chatbot, a code tool, a design plugin.
 - Good for positioning as "the brain of your product"
 - Tagline: *"The thinking layer between your idea and your code."*
 
-**Verdict:** Strong second. Use if Forge is taken or too generic in your market.
+**Verdict:** Strong second. Use if Bulup is taken or too generic in your market.
 
 ---
 
@@ -94,13 +94,13 @@ It must NOT sound like: a chatbot, a code tool, a design plugin.
 
 ## Final Recommendation
 
-# FORGE
+# BULUP
 
 Short. Strong. Tactile. No confusion.
 
 Tagline options:
 - *"Think before you build."*
-- *"Where products are forged."*
+- *"Where products are bulupd."*
 - *"From idea to product. Without the chaos."*
 - *"The product intelligence layer."*
 
@@ -108,4 +108,4 @@ Brand voice direction: Confident. Direct. No hype. Built for people who ship rea
 
 ---
 
-*All documents in this pack use FORGE as the product name. Swap if final name differs.*
+*All documents in this pack use BULUP as the product name. Swap if final name differs.*

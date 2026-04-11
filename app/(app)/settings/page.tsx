@@ -90,7 +90,7 @@ export default function SettingsPage() {
                <section className="space-y-4">
                 <div>
                   <h3 className="text-heading-md font-semibold text-text-primary">Current Plan</h3>
-                  <p className="text-body-sm text-text-secondary">You are currently on the free version of Forge.</p>
+                  <p className="text-body-sm text-text-secondary">You are currently on the free version of Bulup.</p>
                 </div>
                 <div className="rounded-xl border border-border-default bg-bg-surface1 p-6 flex flex-col gap-4">
                    <div className="flex justify-between items-start">

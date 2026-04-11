@@ -1,4 +1,4 @@
-# Forge — Developer Documentation
+# Bulup — Developer Documentation
 **Version:** 1.0
 **For:** Development Team
 **Last Updated:** April 2026
@@ -7,7 +7,7 @@
 
 ## Overview
 
-This document covers the full technical specification for Forge v1 — architecture, stack, data models, API structure, authentication, and setup instructions.
+This document covers the full technical specification for Bulup v1 — architecture, stack, data models, API structure, authentication, and setup instructions.
 
 Read the Project Brief and PRD before this document. This doc covers the *how to build it* — not the *what and why*.
 
@@ -67,7 +67,7 @@ Read the Project Brief and PRD before this document. This doc covers the *how to
 ## Project Structure
 
 ```
-forge/
+bulup/
 ├── app/                         # Next.js App Router
 │   ├── (auth)/
 │   │   ├── sign-in/
@@ -266,7 +266,7 @@ enum DecisionType {
 }
 
 enum DecisionSource {
-  AUTO   // Logged by Forge automatically
+  AUTO   // Logged by Bulup automatically
   MANUAL // Added by user
 }
 ```
@@ -542,7 +542,7 @@ UPSTASH_REDIS_REST_TOKEN=...
 R2_ACCOUNT_ID=...
 R2_ACCESS_KEY_ID=...
 R2_SECRET_ACCESS_KEY=...
-R2_BUCKET_NAME=forge-exports
+R2_BUCKET_NAME=bulup-exports
 R2_PUBLIC_URL=https://...
 
 # Email (Resend)
@@ -626,8 +626,8 @@ Rate limits enforced via Redis counters (key: `ratelimit:{userId}:{operation}:{d
 
 ```bash
 # Clone repo
-git clone https://github.com/[org]/forge.git
-cd forge
+git clone https://github.com/[org]/bulup.git
+cd bulup
 
 # Install dependencies
 npm install
@@ -694,4 +694,4 @@ npx prisma migrate deploy
 
 ---
 
-*Dev Docs v1.0 — Forge. Build clean. Ship real.*
+*Dev Docs v1.0 — Bulup. Build clean. Ship real.*

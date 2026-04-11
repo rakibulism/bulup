@@ -13,8 +13,8 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Forge — Product Intelligence Platform",
-  description: "Think before you build. Forge turns raw ideas into structured product systems.",
+  title: "Bulup — Product Intelligence Platform",
+  description: "Think before you build. Bulup turns raw ideas into structured product systems.",
 };
 
 export default function RootLayout({
