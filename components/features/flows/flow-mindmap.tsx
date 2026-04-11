@@ -95,9 +95,15 @@ function CanvasToast({ toasts }: { toasts: ToastMsg[] }) {
 
 // ─── Main Component ──────────────────────────────────────────────────────────
 
-export function FlowMindmapCanvas() {
+export function FlowMindmapCanvas({ 
+  initialNodes = INITIAL_NODES, 
+  readOnly = false 
+}: { 
+  initialNodes?: MindmapNode[], 
+  readOnly?: boolean 
+}) {
   const constraintsRef = React.useRef(null)
-  const [nodes, setNodes] = React.useState<MindmapNode[]>(INITIAL_NODES)
+  const [nodes, setNodes] = React.useState<MindmapNode[]>(initialNodes)
   const [toasts, setToasts] = React.useState<ToastMsg[]>([])
 
   const addToast = React.useCallback((message: string, type: ToastMsg["type"] = "success") => {
@@ -259,12 +265,14 @@ export function FlowMindmapCanvas() {
                 )}
 
                 {/* ── Sparkle AI Prompt — floats outside top-right ── */}
-                <NodeSparklePrompt
-                  nodeId={node.id}
-                  nodeTitle={node.title}
-                  nodeType="web"
-                  onResult={handleAIResult}
-                />
+                {!readOnly && (
+                  <NodeSparklePrompt
+                    nodeId={node.id}
+                    nodeTitle={node.title}
+                    nodeType="web"
+                    onResult={handleAIResult}
+                  />
+                )}
 
                 <div className="p-4 flex flex-col gap-2 h-full justify-center text-left">
                   <div className="flex items-start justify-between gap-2">

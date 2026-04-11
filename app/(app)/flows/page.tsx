@@ -6,30 +6,60 @@ import * as React from "react"
 import { AppHeader } from "@/components/layout/app-header"
 import { Button } from "@/components/ui/button"
 import { Spinner } from "@/components/ui/spinner"
-import { FlowMindmapCanvas } from "@/components/features/flows/flow-mindmap"
+import { FlowMindmapCanvas, MindmapNode } from "@/components/features/flows/flow-mindmap"
 import { Sparkles, Beaker, Wand2, LayoutTemplate, ArrowRight, BookOpen, Users, Compass } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { ConfirmModal } from "@/components/organisms/confirm-modal"
+import { TemplatePreviewModal } from "@/components/features/flows/template-preview-modal"
 
 import { Suspense } from "react"
 
 // Mock templates
+// Mock flow data for templates
+const TEMPLATE_FLOWS: Record<string, MindmapNode[]> = {
+  ecomm: [
+    { id: "e1", title: "Storefront", description: "Product grid and categories", x: -200, y: 0 },
+    { id: "e2", title: "Product Detail", description: "Price, gallery, and 'Add to Cart'", x: 100, y: -50, sourceNodeId: "e1" },
+    { id: "e3", title: "Shopping Cart", description: "Review items and modify quantities", x: 400, y: 0, sourceNodeId: "e2" },
+    { id: "e4", title: "Secure Checkout", description: "Shipping and payment details", x: 700, y: 50, sourceNodeId: "e3" },
+  ],
+  saas: [
+    { id: "s1", title: "Login/Signup", description: "Auth portal for users", x: -250, y: 0 },
+    { id: "s2", title: "Dashboard", description: "Main metrics and KPIs", x: 50, y: 0, sourceNodeId: "s1" },
+    { id: "s3", title: "Settings", description: "User and organization config", x: 350, y: -80, sourceNodeId: "s2" },
+    { id: "s4", title: "Reports", description: "Exportable data views", x: 350, y: 80, sourceNodeId: "s2" },
+  ],
+  social: [
+    { id: "so1", title: "Feed", description: "Infinite scroll of posts", x: -100, y: 0 },
+    { id: "so2", title: "New Post Modal", description: "Editor and media uploader", x: 200, y: -100, sourceNodeId: "so1" },
+    { id: "so3", title: "User Profile", description: "User info and post history", x: 200, y: 100, sourceNodeId: "so1" },
+    { id: "so4", title: "Notifications", description: "Likes, comments, and mentions", x: 500, y: 0, sourceNodeId: "so1" },
+  ],
+  travel: [
+    { id: "t1", title: "Search", description: "Filter by dates and location", x: -200, y: 0 },
+    { id: "t2", title: "Result Map", description: "Visual map of stays", x: 100, y: 0, sourceNodeId: "t1" },
+    { id: "t3", title: "Booking Flow", description: "Reservation details", x: 400, y: 0, sourceNodeId: "t2" },
+  ]
+}
+
+// Mock templates
 const COMMUNITY_TEMPLATES = [
-  { id: "ecomm", title: "E-Commerce App", desc: "Complete store, cart, and checkout flow", icon: BookOpen, users: "1.2k" },
-  { id: "saas", title: "SaaS Dashboard", desc: "Analytics, settings, and user management", icon: LayoutTemplate, users: "850" },
-  { id: "social", title: "Social Feed", desc: "Posting, commenting, and user profiles", icon: Users, users: "2.4k" },
-  { id: "travel", title: "Travel Planner", desc: "Itinerary builder, maps, and bookings", icon: Compass, users: "420" },
+  { id: "ecomm", title: "E-Commerce App", desc: "Complete store, cart, and checkout flow", icon: BookOpen, users: "1.2k", nodes: TEMPLATE_FLOWS.ecomm },
+  { id: "saas", title: "SaaS Dashboard", desc: "Analytics, settings, and user management", icon: LayoutTemplate, users: "850", nodes: TEMPLATE_FLOWS.saas },
+  { id: "social", title: "Social Feed", desc: "Posting, commenting, and user profiles", icon: Users, users: "2.4k", nodes: TEMPLATE_FLOWS.social },
+  { id: "travel", title: "Travel Planner", desc: "Itinerary builder, maps, and bookings", icon: Compass, users: "420", nodes: TEMPLATE_FLOWS.travel },
 ]
 
 function FlowContent() {
   const [status, setStatus] = React.useState<"idle" | "loading" | "success">("idle")
   const [prompt, setPrompt] = React.useState("")
-  const [isTemplateModalOpen, setIsTemplateModalOpen] = React.useState(false)
-  const [selectedTemplate, setSelectedTemplate] = React.useState<(typeof COMMUNITY_TEMPLATES)[0] | null>(null)
+  const [activeNodes, setActiveNodes] = React.useState<MindmapNode[] | undefined>(undefined)
+  const [previewTemplate, setPreviewTemplate] = React.useState<(typeof COMMUNITY_TEMPLATES)[0] | null>(null)
 
   const handleGenerate = () => {
     if (!prompt.trim()) return
     setStatus("loading")
+    setActiveNodes(undefined) // Reset for fresh generation
+    
     // Mock network request / AI processing time
     setTimeout(() => {
       setStatus("success")
@@ -37,16 +67,15 @@ function FlowContent() {
   }
 
   const handleTemplateClick = (template: (typeof COMMUNITY_TEMPLATES)[0]) => {
-    setSelectedTemplate(template)
-    setIsTemplateModalOpen(true)
+    setPreviewTemplate(template)
   }
 
   const handleConfirmTemplate = () => {
-    if (selectedTemplate) {
-      setPrompt(selectedTemplate.desc)
+    if (previewTemplate) {
+      setActiveNodes(previewTemplate.nodes)
+      setStatus("success")
+      setPreviewTemplate(null)
     }
-    setIsTemplateModalOpen(false)
-    setSelectedTemplate(null)
   }
 
   const handleIdeaWorkshop = () => {
@@ -159,21 +188,16 @@ function FlowContent() {
 
       {status === "success" && (
         <div className="relative flex-1 rounded-2xl border border-border-default overflow-hidden animate-in fade-in zoom-in-95 duration-500 bg-bg-base fill-available">
-          <FlowMindmapCanvas />
+          <FlowMindmapCanvas key={status === "success" ? (activeNodes?.[0]?.id || "ai") : "idle"} initialNodes={activeNodes} />
         </div>
       )}
 
-      {selectedTemplate && (
-        <ConfirmModal
-          isOpen={isTemplateModalOpen}
-          onClose={() => setIsTemplateModalOpen(false)}
-          onConfirm={handleConfirmTemplate}
-          title={selectedTemplate.title}
-          description={selectedTemplate.desc}
-          confirmText="Use this template"
-          cancelText="Cancel"
-        />
-      )}
+      <TemplatePreviewModal 
+        isOpen={!!previewTemplate}
+        onClose={() => setPreviewTemplate(null)}
+        onConfirm={handleConfirmTemplate}
+        template={previewTemplate}
+      />
     </div>
   )
 }
