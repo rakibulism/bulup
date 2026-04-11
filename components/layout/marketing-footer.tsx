@@ -24,10 +24,10 @@ export function MarketingFooter() {
             <h4 className="font-medium text-sm mb-4">Product</h4>
             <ul className="space-y-3 text-sm text-l-muted-foreground">
               <li><a href="#features" className="hover:text-l-foreground transition-colors">Idea Workshop</a></li>
-              <li><a href="#features" className="hover:text-l-foreground transition-colors">UX Flow Builder</a></li>
-              <li><a href="#features" className="hover:text-l-foreground transition-colors">Design System Studio</a></li>
-              <li><a href="#features" className="hover:text-l-foreground transition-colors">Product Brain</a></li>
-              <li><a href="#features" className="hover:text-l-foreground transition-colors">Handoff Center</a></li>
+              <li><Link href="/flows" className="hover:text-l-foreground transition-colors">UX Flow Builder</Link></li>
+              <li><Link href="/design-system" className="hover:text-l-foreground transition-colors">Design System Studio</Link></li>
+              <li><Link href="/brain" className="hover:text-l-foreground transition-colors">Product Brain</Link></li>
+              <li><Link href="/handoff" className="hover:text-l-foreground transition-colors">Handoff Center</Link></li>
             </ul>
           </div>
           

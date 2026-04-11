@@ -32,15 +32,17 @@ export function MarketingNavbar() {
             bulup
           </Link>
           <nav className="hidden md:flex items-center gap-6 text-sm text-l-muted-foreground font-medium">
-            <a href="#features" className="hover:text-l-foreground transition-colors">Features</a>
-            <a href="#pricing" className="hover:text-l-foreground transition-colors">Pricing</a>
-            <Link href="/blog" className="hover:text-l-foreground transition-colors">Blog</Link>
+            <Link href="/dashboard" className="hover:text-l-foreground transition-colors">Dashboard</Link>
+            <a href="#features" className="hover:text-l-foreground transition-colors">Workshop</a>
+            <Link href="/flows" className="hover:text-l-foreground transition-colors">UX Flows</Link>
+            <Link href="/design-system" className="hover:text-l-foreground transition-colors">Design Studio</Link>
+            <Link href="/brain" className="hover:text-l-foreground transition-colors">Brain</Link>
           </nav>
         </div>
         
         <div className="flex items-center gap-4">
           <Link href="/sign-in" className="text-sm font-medium text-l-muted-foreground hover:text-l-foreground hidden sm:block transition-colors">
-            Sign in
+            Login
           </Link>
           <Link href="/sign-up">
             <Button size="sm" className="rounded-full px-5 bg-l-primary text-l-background hover:bg-l-primary/90">

@@ -35,7 +35,7 @@ export default function LandingPage() {
         <section className="pt-40 pb-24 px-6 max-w-7xl mx-auto w-full flex flex-col items-center text-center animate-slide-up">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-l-secondary border border-l-border text-xs font-medium text-l-muted-foreground mb-8">
             <Sparkles className="h-3.5 w-3.5 text-l-primary" />
-            The product intelligence layer your team is missing
+            Product intelligence layer
           </div>
           
           <h1 className="text-5xl md:text-7xl font-medium tracking-tight text-l-foreground max-w-4xl mb-8 leading-[1.1]">
@@ -43,9 +43,9 @@ export default function LandingPage() {
           </h1>
           
           <p className="text-lg md:text-xl text-l-muted-foreground max-w-2xl mb-10 leading-relaxed">
-            bulup turns your raw idea into a structured product system — 
-            architecture, UX flows, design system, and dev docs — 
-            <strong className="font-medium text-l-foreground"> before your team opens a single tool.</strong>
+            Bulup turns raw ideas into structured product systems. 
+            Architecture, UX flows, design systems, and dev docs — 
+            <strong className="font-medium text-l-foreground">ready before your team opens a single tool.</strong>
           </p>
           
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
@@ -54,7 +54,7 @@ export default function LandingPage() {
                 Start for free
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto rounded-full px-8 h-12 text-base group border-l-border hover:bg-l-secondary">
+            <Button variant="outline" size="lg" className="w-full sm:w-auto rounded-full px-8 h-12 text-base group border-l-border hover:bg-l-secondary text-l-foreground">
               See how it works
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
@@ -92,15 +92,14 @@ export default function LandingPage() {
             The Real Problem
           </span>
           <h2 className="text-3xl md:text-5xl font-medium tracking-tight text-l-foreground mb-10 leading-tight">
-            Everyone has a coding tool.<br/>
-            Nobody has a thinking tool.
+            Not a code tool.
           </h2>
           <div className="text-base md:text-lg text-l-muted-foreground space-y-6 max-w-2xl mx-auto text-left md:text-center">
             <p>
-              Lovable, Cursor, Bolt — they all answer the same question:<br/>
+              Lovable, Cursor, Claude Code — they all answer the same question:<br/>
               <span className="italic text-l-foreground font-medium">"How do I build it?"</span>
             </p>
-            <p>Nobody answers the question before that.</p>
+            <p>Bulup answers a different question:</p>
             <div className="p-6 bg-l-secondary border border-l-border rounded-xl inline-block text-left my-4 shadow-sm">
               <ul className="space-y-3 font-medium text-l-foreground">
                 <li className="flex items-center gap-3">
@@ -111,15 +110,10 @@ export default function LandingPage() {
                   <Route className="h-4 w-4 text-l-muted-foreground" />
                   How should it work?
                 </li>
-                <li className="flex items-center gap-3">
-                  <Layers className="h-4 w-4 text-l-muted-foreground" />
-                  What do I build first?
-                </li>
               </ul>
             </div>
-            <p className="font-medium text-l-foreground">
-              That's where most products fail.<br/>
-              Not in the code. In the thinking.
+            <p className="font-medium text-l-foreground text-xl">
+              Think before you build.
             </p>
           </div>
         </section>
@@ -136,7 +130,7 @@ export default function LandingPage() {
               </span>
               <h3 className="text-3xl font-medium tracking-tight text-l-foreground">From idea to product architecture in minutes.</h3>
               <p className="text-l-muted-foreground leading-relaxed">
-                Describe your product in plain English. bulup returns a structured product architecture — user roles, feature tiers, data model, primary flows, and a clear MVP scope. No brief template. No consultant needed. Just your idea, and a system that knows what to ask.
+                Describe your product in plain English. Bulup returns a structured product architecture — features, user roles, flows, and a scoped MVP — ready to hand to your team.
               </p>
               <ul className="space-y-3 text-sm text-l-muted-foreground pt-4">
                 <li className="flex items-start gap-2">
@@ -145,7 +139,7 @@ export default function LandingPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-4 w-4 mt-0.5 text-l-primary" />
-                  <span><strong className="text-l-foreground font-medium">Confidence indicators</strong> — see what bulup assumed vs. understood</span>
+                  <span><strong className="text-l-foreground font-medium">Confidence indicators</strong> — see what Bulup assumed vs. understood</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-4 w-4 mt-0.5 text-l-primary" />
@@ -203,7 +197,7 @@ export default function LandingPage() {
               </span>
               <h3 className="text-3xl font-medium tracking-tight text-l-foreground">Every screen. Every state.<br/>Before Figma opens.</h3>
               <p className="text-l-muted-foreground leading-relaxed">
-                bulup maps your entire product as a connected flow diagram — screen by screen, state by state. Onboarding. Core actions. Error handling. Edge cases. All of it. Generated from your product architecture.
+                Bulup maps your entire product as a connected flow diagram — screen by screen, state by state. Onboarding. Core actions. Error handling. Edge cases. All of it. Generated from your product architecture.
               </p>
               <ul className="space-y-3 text-sm text-l-muted-foreground pt-4">
                 <li className="flex items-start gap-2">
@@ -234,9 +228,9 @@ export default function LandingPage() {
                 <Palette className="h-3.5 w-3.5" />
                 Design System Studio
               </span>
-              <h3 className="text-3xl font-medium tracking-tight text-l-foreground">A real design system.<br/>Not a color palette.</h3>
+              <h3 className="text-3xl font-medium tracking-tight text-l-foreground">A real design system. Not a color palette.</h3>
               <p className="text-l-muted-foreground leading-relaxed">
-                Most AI tools give you five hex codes and call it a design system. bulup generates complete token architecture — primitive, semantic, and component tiers. Built-in accessibility audit. Export as CSS, Tailwind, JSON, or TypeScript. Paste and build.
+                Bulup generates complete token architecture, typography scale, component specs, and export-ready CSS, Tailwind, and Figma variables. In one generation.
               </p>
               <ul className="space-y-3 text-sm text-l-muted-foreground pt-4">
                 <li className="flex items-start gap-2">
@@ -254,7 +248,7 @@ export default function LandingPage() {
               </ul>
               <div className="pt-4">
                 <Link href="/design-system" className="inline-flex items-center gap-1 text-sm font-medium text-l-primary hover:underline group">
-                  See a sample system <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  See a sample output <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>
@@ -297,12 +291,12 @@ export default function LandingPage() {
               <Brain className="h-8 w-8 text-l-primary mb-6" />
               <h3 className="text-2xl font-medium tracking-tight mb-4 text-l-foreground">Product Brain</h3>
               <p className="text-sm text-l-muted-foreground mb-6">
-                Every decision your team makes — architecture choices, feature changes, "why we didn't build X" — stored, searchable, and permanent.
+                Your product has a memory now. Every decision, revision, and "why we chose this" stored, searchable, and available whenever you need context.
               </p>
               <ul className="space-y-2 text-sm text-l-muted-foreground mb-8">
                 <li className="flex items-center gap-2">
                   <div className="w-1 h-1 bg-l-border rounded-full"></div>
-                  Auto-logs every bulup generation
+                  Auto-logs every Bulup generation
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-1 h-1 bg-l-border rounded-full"></div>
@@ -310,7 +304,7 @@ export default function LandingPage() {
                 </li>
               </ul>
               <Link href="/brain" className="inline-flex items-center gap-1 text-sm font-medium text-l-primary hover:underline group">
-                Learn about Product Brain <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                Learn about memory <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
 
@@ -318,12 +312,12 @@ export default function LandingPage() {
               <Package className="h-8 w-8 text-l-primary mb-6" />
               <h3 className="text-2xl font-medium tracking-tight mb-4 text-l-foreground">Handoff Center</h3>
               <p className="text-sm text-l-muted-foreground mb-6">
-                Everything your team needs. Without the meeting. PRD. UX specs. Design tokens. Dev documentation. Exported in formats your team can use immediately.
+                Everything your team needs. Without the meeting. PRDs, UX specs, design tokens, dev docs — exported in formats your team can use immediately.
               </p>
               <ul className="space-y-2 text-sm text-l-muted-foreground mb-8">
                 <li className="flex items-center gap-2">
                   <div className="w-1 h-1 bg-l-border rounded-full"></div>
-                  No bulup account needed to view
+                  No Bulup account needed to view
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="w-1 h-1 bg-l-border rounded-full"></div>
@@ -384,6 +378,7 @@ export default function LandingPage() {
             <div className="border border-l-border rounded-2xl p-8 flex flex-col bg-l-background">
               <h3 className="text-xl font-medium mb-2 text-l-foreground">Free</h3>
               <div className="text-3xl font-medium tracking-tight mb-6 text-l-foreground">$0<span className="text-base text-l-muted-foreground font-normal tracking-normal">/mo</span></div>
+              <p className="text-sm text-l-muted-foreground mb-6 italic">Think and structure your first product.</p>
               <ul className="space-y-4 mb-8 flex-1 text-sm text-l-muted-foreground">
                 <li className="flex items-center gap-3 text-l-foreground"><CheckCircle2 className="h-4 w-4 text-l-primary" /> 1 product</li>
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-4 w-4 text-l-primary" /> 3 UX flows</li>
@@ -392,7 +387,7 @@ export default function LandingPage() {
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-4 w-4 text-l-primary" /> Markdown export</li>
               </ul>
               <Link href="/sign-up">
-                <Button variant="outline" className="w-full border-l-border hover:bg-l-secondary text-l-foreground">Start free</Button>
+                <Button variant="outline" className="w-full border-l-border hover:bg-l-secondary text-l-foreground">Get started free</Button>
               </Link>
             </div>
 
@@ -403,6 +398,7 @@ export default function LandingPage() {
               </div>
               <h3 className="text-xl font-medium mb-2 text-l-foreground">Pro</h3>
               <div className="text-3xl font-medium tracking-tight mb-6 text-l-foreground">$29<span className="text-base text-l-muted-foreground font-normal tracking-normal">/mo</span></div>
+              <p className="text-sm text-l-muted-foreground mb-6 italic">For founders and designers building seriously.</p>
               <ul className="space-y-4 mb-8 flex-1 text-sm text-l-muted-foreground">
                 <li className="flex items-center gap-3 text-l-foreground font-medium"><CheckCircle2 className="h-4 w-4 text-l-primary" /> Unlimited products</li>
                 <li className="flex items-center gap-3 text-l-foreground font-medium"><CheckCircle2 className="h-4 w-4 text-l-primary" /> Unlimited flows</li>
@@ -420,6 +416,7 @@ export default function LandingPage() {
             <div className="border border-l-border rounded-2xl p-8 flex flex-col bg-l-background">
               <h3 className="text-xl font-medium mb-2 text-l-foreground">Team</h3>
               <div className="text-3xl font-medium tracking-tight mb-6 text-l-foreground">$79<span className="text-base text-l-muted-foreground font-normal tracking-normal">/mo</span></div>
+              <p className="text-sm text-l-muted-foreground mb-6 italic">For small teams who need shared product intelligence.</p>
               <ul className="space-y-4 mb-8 flex-1 text-sm text-l-muted-foreground">
                 <li className="flex items-center gap-3 text-l-foreground"><CheckCircle2 className="h-4 w-4 text-l-primary" /> Everything in Pro</li>
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-4 w-4 text-l-primary" /> Up to 5 seats</li>
