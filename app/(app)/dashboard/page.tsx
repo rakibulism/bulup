@@ -1,4 +1,5 @@
 import * as React from "react"
+import Link from "next/link"
 import { AppHeader } from "@/components/layout/app-header"
 import { Button } from "@/components/ui/button"
 import { SearchBar } from "@/components/composed/search-bar"
@@ -33,10 +34,12 @@ export default function DashboardPage() {
       <AppHeader 
         title="Dashboard" 
         actions={
-          <Button size="sm" className="gap-2">
-            <Plus className="h-4 w-4" />
-            New Product
-          </Button>
+          <Link href="/workshop">
+            <Button size="sm" className="gap-2">
+              <Plus className="h-4 w-4" />
+              New Product
+            </Button>
+          </Link>
         }
       />
 
