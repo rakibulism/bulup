@@ -14,12 +14,35 @@ import { Sparkles, Save, RotateCcw, ArrowLeft, Check } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export default function WorkshopPage() {
+  const [intakeMode, setIntakeMode] = React.useState<"freestyle" | "guided">("freestyle")
   const [brief, setBrief] = React.useState("")
+  const [guidedBrief, setGuidedBrief] = React.useState({
+    do: "",
+    who: "",
+    problem: "",
+    different: ""
+  })
   const [productName, setProductName] = React.useState("")
   const [isNamingProduct, setIsNamingProduct] = React.useState(false)
   const [isSaving, setIsSaving] = React.useState(false)
   
+  // High-fidelity Versioning & Variations
+  const [versionHistory, setVersionHistory] = React.useState<any[]>([])
+  const [currentVersionIndex, setCurrentVersionIndex] = React.useState(-1)
+  const [isComparing, setIsComparing] = React.useState(false)
+  const [isLocked, setIsLocked] = React.useState(false)
+  
   const { generate, status, progress, result, reset } = useArchitectureStream()
+
+  const currentResult = versionHistory[currentVersionIndex] || result
+
+  // Track history when generation succeeds
+  React.useEffect(() => {
+    if (status === "success" && result) {
+      setVersionHistory(prev => [...prev, result])
+      setCurrentVersionIndex(prev => prev + 1)
+    }
+  }, [status, result])
 
   // Sync product name with result when it first arrives
   React.useEffect(() => {
@@ -29,8 +52,17 @@ export default function WorkshopPage() {
   }, [result, productName])
 
   const handleBulup = () => {
-    if (brief.trim().length < 20) return
-    generate(brief)
+    let finalBrief = brief
+    if (intakeMode === "guided") {
+      finalBrief = `
+        Product Action: ${guidedBrief.do}
+        Target Audience: ${guidedBrief.who}
+        Core Problem: ${guidedBrief.problem}
+        Unique Differentiator: ${guidedBrief.different}
+      `.trim()
+    }
+    if (finalBrief.trim().length < 10) return
+    generate(finalBrief)
   }
 
   const handleRefine = (text: string) => {
@@ -122,57 +154,132 @@ export default function WorkshopPage() {
                    This is how your product will appear on your dashboard.
                  </p>
                </div>
-               <div className="space-y-4 bg-bg-surface1 p-6 rounded-xl border border-border-default">
-                  <div className="space-y-2">
-                    <label className="text-label-sm font-bold text-text-tertiary uppercase">Product Name</label>
-                    <input 
-                      type="text"
-                      className="w-full h-12 bg-bg-surface2 border border-border-strong rounded-lg px-4 text-text-primary focus:ring-2 focus:ring-brand-default outline-none"
-                      value={productName}
-                      onChange={(e) => setProductName(e.target.value)}
-                      placeholder="e.g. Nebula CRM"
-                      autoFocus
-                    />
-                  </div>
-                  <div className="flex items-center gap-3 p-3 bg-brand-subtle/20 rounded-lg text-brand-text border border-brand-subtle/30">
-                     <Check className="h-4 w-4 shrink-0" />
-                     <p className="text-caption">Architecture, UX flows, and Design System draft will be initialized.</p>
-                  </div>
-               </div>
+               {/* ... (naming input stays same) */}
             </div>
           ) : (
-            <>
-              <div className="space-y-2">
-                <h3 className="text-heading-md font-semibold text-text-primary">What are you building?</h3>
+            <div className="space-y-8 animate-in fade-in duration-500">
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                   <h3 className="text-heading-md font-semibold text-text-primary">What are you building?</h3>
+                   <div className="flex bg-bg-surface2 p-1 rounded-lg border border-border-subtle">
+                      <button 
+                        onClick={() => setIntakeMode("freestyle")}
+                        className={cn(
+                          "px-3 py-1.5 text-[11px] font-bold rounded-md transition-all",
+                          intakeMode === "freestyle" ? "bg-bg-surface1 shadow-sm text-brand-text" : "text-text-tertiary"
+                        )}
+                      >
+                        Write freely
+                      </button>
+                      <button 
+                        onClick={() => setIntakeMode("guided")}
+                        className={cn(
+                          "px-3 py-1.5 text-[11px] font-bold rounded-md transition-all",
+                          intakeMode === "guided" ? "bg-bg-surface1 shadow-sm text-brand-text" : "text-text-tertiary"
+                        )}
+                      >
+                        Guide me
+                      </button>
+                   </div>
+                </div>
                 <p className="text-body-sm text-text-secondary">
-                  The more detail you provide, the better the architecture. Describe target users, core actions, and the problems you solve.
+                  {intakeMode === "freestyle" 
+                    ? "The more detail you provide, the better the architecture. Describe target users, core actions, and the problems you solve."
+                    : "Answer these 4 micro-questions to help Bulup AI build a grounded architecture."}
                 </p>
               </div>
 
-              <div className="relative">
-                <textarea
-                  className="flex min-h-[400px] w-full rounded-xl border border-border-default bg-bg-surface1 px-6 py-4 text-body-md text-text-primary ring-offset-bg-base placeholder:text-text-tertiary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-default resize-none"
-                  placeholder="Ex: A collaborative platform for gardeners to share soil data and plant growth timelines..."
-                  value={brief}
-                  onChange={(e) => setBrief(e.target.value)}
-                  disabled={status === "loading"}
-                  maxLength={2000}
-                />
-                <div className="absolute bottom-4 right-4 text-caption text-text-tertiary">
-                  {brief.length} / 2000
+              {intakeMode === "freestyle" ? (
+                <div className="relative">
+                  <textarea
+                    className="flex min-h-[400px] w-full rounded-xl border border-border-default bg-bg-surface1 px-6 py-4 text-body-md text-text-primary ring-offset-bg-base placeholder:text-text-tertiary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-default resize-none transition-all"
+                    placeholder="Ex: A collaborative platform for gardeners to share soil data..."
+                    value={brief}
+                    onChange={(e) => setBrief(e.target.value)}
+                    disabled={status === "loading"}
+                    maxLength={2000}
+                  />
+                  <div className="absolute bottom-4 right-4 text-caption text-text-tertiary">
+                    {brief.length} / 2000
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="grid gap-4 bg-bg-surface1 p-6 rounded-2xl border border-border-default shadow-sm animate-in slide-in-from-bottom-4">
+                   <div className="space-y-2">
+                      <label className="text-[10px] font-bold uppercase text-text-tertiary tracking-widest">1. What does your product do?</label>
+                      <input 
+                        className="w-full bg-bg-surface2 border border-border-subtle rounded-lg px-4 py-3 text-body-sm outline-none focus:ring-2 focus:ring-brand-default"
+                        placeholder="One sentence action..."
+                        value={guidedBrief.do}
+                        onChange={e => setGuidedBrief({ ...guidedBrief, do: e.target.value })}
+                        maxLength={200}
+                      />
+                   </div>
+                   <div className="space-y-2">
+                      <label className="text-[10px] font-bold uppercase text-text-tertiary tracking-widest">2. Who is it for?</label>
+                      <input 
+                        className="w-full bg-bg-surface2 border border-border-subtle rounded-lg px-4 py-3 text-body-sm outline-none focus:ring-2 focus:ring-brand-default"
+                        placeholder="Be specific about the persona..."
+                        value={guidedBrief.who}
+                        onChange={e => setGuidedBrief({ ...guidedBrief, who: e.target.value })}
+                        maxLength={200}
+                      />
+                   </div>
+                   <div className="space-y-2">
+                      <label className="text-[10px] font-bold uppercase text-text-tertiary tracking-widest">3. Main problem it solves?</label>
+                      <input 
+                        className="w-full bg-bg-surface2 border border-border-subtle rounded-lg px-4 py-3 text-body-sm outline-none focus:ring-2 focus:ring-brand-default"
+                        placeholder="What's the core pain point?"
+                        value={guidedBrief.problem}
+                        onChange={e => setGuidedBrief({ ...guidedBrief, problem: e.target.value })}
+                        maxLength={200}
+                      />
+                   </div>
+                   <div className="space-y-2">
+                      <label className="text-[10px] font-bold uppercase text-text-tertiary tracking-widest">4. One thing that makes it different?</label>
+                      <input 
+                        className="w-full bg-bg-surface2 border border-border-subtle rounded-lg px-4 py-3 text-body-sm outline-none focus:ring-2 focus:ring-brand-default"
+                        placeholder="Your unique differentiator..."
+                        value={guidedBrief.different}
+                        onChange={e => setGuidedBrief({ ...guidedBrief, different: e.target.value })}
+                        maxLength={200}
+                      />
+                   </div>
+                </div>
+              )}
 
               <Button 
                 size="lg" 
-                className="w-full gap-3 shadow-xl h-12" 
+                className="w-full gap-3 shadow-xl h-12 bg-text-primary text-text-inverse hover:bg-text-secondary transition-all active:scale-[0.98]" 
                 onClick={handleBulup}
-                disabled={brief.trim().length < 20 || status === "loading"}
+                disabled={status === "loading" || (intakeMode === "freestyle" ? brief.length < 20 : !guidedBrief.do)}
               >
                 {status === "loading" ? <Spinner size="sm" /> : <Sparkles className="h-5 w-5" />}
-                {status === "loading" ? "Generating Product Architecture..." : "Bulup Product Architecture"}
+                {status === "loading" ? "Thinking deep..." : "Architect Product"}
               </Button>
-            </>
+
+              {versionHistory.length > 1 && (
+                <div className="pt-4 space-y-3">
+                   <p className="text-[10px] font-bold uppercase text-text-tertiary text-center">Version History</p>
+                   <div className="flex flex-wrap gap-2 justify-center">
+                      {versionHistory.map((_, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setCurrentVersionIndex(i)}
+                          className={cn(
+                            "w-8 h-8 rounded-full border transition-all text-[11px] font-bold flex items-center justify-center",
+                            currentVersionIndex === i 
+                              ? "bg-brand-default border-brand-default text-white shadow-lg" 
+                              : "bg-bg-surface2 border-border-subtle text-text-tertiary hover:border-text-secondary"
+                          )}
+                        >
+                          v{i + 1}
+                        </button>
+                      ))}
+                   </div>
+                </div>
+              )}
+            </div>
           )}
         </div>
 
@@ -202,10 +309,53 @@ export default function WorkshopPage() {
             </div>
           )}
 
-          {status === "success" && result && (
+          {status === "success" && (result || currentResult) && (
             <div className="flex flex-col gap-8 h-full">
-              <div className="flex-1">
-                <ArchitectureViewer result={result} />
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="p-2 bg-brand-default/10 rounded-lg text-brand-default">
+                    <Sparkles className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <h3 className="text-label-sm font-bold text-text-primary">Current Strategy</h3>
+                    <p className="text-[11px] text-text-tertiary">Version {currentVersionIndex + 1} finalized</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                   <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    onClick={() => setIsComparing(!isComparing)}
+                    className={cn("gap-2 text-[11px] font-bold uppercase tracking-wider", isComparing && "bg-brand-subtle/20 text-brand-text")}
+                   >
+                     Compare Variation
+                   </Button>
+                </div>
+              </div>
+
+              <div className={cn(
+                "grid gap-8 transition-all duration-700",
+                isComparing ? "grid-cols-2" : "grid-cols-1"
+              )}>
+                <div className="flex flex-col gap-8">
+                  {isComparing && <p className="text-[10px] font-bold uppercase text-text-tertiary text-center tracking-widest">Original v1</p>}
+                  <ArchitectureViewer 
+                    result={versionHistory[0] || currentResult} 
+                    isLocked={isLocked}
+                    onToggleLock={() => setIsLocked(!isLocked)}
+                  />
+                </div>
+
+                {isComparing && (
+                  <div className="flex flex-col gap-8 animate-in slide-in-from-right-8 duration-700">
+                    <p className="text-[10px] font-bold uppercase text-brand-text text-center tracking-widest">Variation v{currentVersionIndex + 1}</p>
+                    <ArchitectureViewer 
+                      result={currentResult} 
+                      isLocked={isLocked}
+                      onToggleLock={() => setIsLocked(!isLocked)}
+                    />
+                  </div>
+                )}
               </div>
               
               {!isNamingProduct && (

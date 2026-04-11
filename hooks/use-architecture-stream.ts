@@ -9,22 +9,56 @@ export interface ProgressStep {
   timestamp: string
 }
 
+export interface ArchitectureResult {
+  productName: string
+  concept: { text: string; status: "grounded" | "assumed" }
+  targetAudience: { role: string; status: "grounded" | "assumed" }[]
+  problemStatement: { text: string; status: "grounded" | "assumed" }
+  mvpScope: { text: string; status: "grounded" | "assumed" }
+  coreFeatures: {
+    name: string
+    description: string
+    priority: "High" | "Medium" | "Low"
+    x: number
+    y: number
+    status: "grounded" | "assumed"
+  }[]
+  userRoles: {
+    role: string
+    capabilities: string[]
+    status: "grounded" | "assumed"
+  }[]
+  futureRoadmap: string[]
+}
+
 const MOCK_RESULT: ArchitectureResult = {
   productName: "Nebula CRM",
-  concept: "A unified workspace for creators to manage their entire audience lifecycle, from first contact to loyal advocate, powered by intelligent automation.",
-  targetAudience: ["Independent Creators", "Small Agency Owners", "Solopreneurs"],
-  problemStatement: "Creators represent a massive economy but use fragmented tools, leading to lost data, missed opportunities, and technical overwhelm.",
-  mvpScope: "A core contact management layer with automated outreach triggers and a unified dashboard for tracking sponsorship deals.",
+  concept: { 
+    text: "A unified workspace for creators to manage their entire audience lifecycle, from first contact to loyal advocate.",
+    status: "grounded"
+  },
+  targetAudience: [
+    { role: "Independent Creators", status: "grounded" },
+    { role: "Small Agency Owners", status: "assumed" }
+  ],
+  problemStatement: {
+    text: "Creators representative a massive economy but use fragmented tools, leading to lost data and technical overwhelm.",
+    status: "grounded"
+  },
+  mvpScope: {
+    text: "A core contact management layer with automated outreach triggers and a unified dashboard.",
+    status: "assumed"
+  },
   coreFeatures: [
-    { name: "Audience CRM", description: "Centralized database of all subscribers and sponsors.", priority: "High" },
-    { name: "Automation Flows", description: "Visual builder for automated email and social outreach.", priority: "High" },
-    { name: "Deal Tracker", description: "Kanban board for managing sponsorship pipelines.", priority: "Medium" }
+    { name: "Audience CRM", description: "Centralized database of subscribers.", priority: "High", x: 20, y: 85, status: "grounded" },
+    { name: "Automation Flows", description: "Visual builder for outreach.", priority: "High", x: 45, y: 90, status: "grounded" },
+    { name: "Deal Tracker", description: "Kanban board for sponsorship.", priority: "Medium", x: 70, y: 40, status: "assumed" }
   ],
   userRoles: [
-    { role: "Creator", capabilities: ["Manage audience", "Build automations", "View deals"] },
-    { role: "Brand Manager", capabilities: ["Review proposals", "Track ROI", "Manage payments"] }
+    { role: "Creator", capabilities: ["Manage audience", "Build automations"], status: "grounded" },
+    { role: "Brand Manager", capabilities: ["Review proposals", "Track ROI"], status: "assumed" }
   ],
-  futureRoadmap: ["AI Copywriting Assistant", "Community Forum Integration", "Custom Domain Support"]
+  futureRoadmap: ["AI Copywriting Assistant", "Community Forum Integration"]
 }
 
 export function useArchitectureStream() {
@@ -92,8 +126,13 @@ export function useArchitectureStream() {
       // Fallback to mock for testing the UI flow
       setResult({
         ...MOCK_RESULT,
-        productName: brief.split(" ").slice(0, 2).join(" ") || MOCK_RESULT.productName,
-        concept: brief.length > 50 ? brief : MOCK_RESULT.concept
+        productName: brief.includes("Product Action:") 
+          ? "Deep Strategy" 
+          : (brief.split(" ").slice(0, 2).join(" ") || MOCK_RESULT.productName),
+        concept: {
+          text: brief.length > 50 ? brief : MOCK_RESULT.concept.text,
+          status: "grounded"
+        }
       });
       setStatus("success");
 
