@@ -28,6 +28,8 @@ const navItems = [
   { label: "Handoff", icon: FileOutput, href: "/handoff" },
 ]
 
+import Image from "next/image"
+
 export function Sidebar() {
   const [isCollapsed, setIsCollapsed] = React.useState(false)
   const pathname = usePathname()
@@ -43,16 +45,26 @@ export function Sidebar() {
         <div className="flex h-16 items-center border-b border-border-default px-4 justify-between">
           {!isCollapsed && (
             <Link href="/dashboard" className="flex items-center gap-2 font-bold text-text-primary">
-              <div className="h-8 w-8 rounded-lg bg-brand-default flex items-center justify-center text-text-primary">
-                F
-              </div>
+              <Image 
+                src="/logo.png" 
+                alt="Bulup Logo" 
+                width={28} 
+                height={28} 
+                className="rounded-sm"
+              />
               <span>BULUP</span>
             </Link>
           )}
           {isCollapsed && (
-             <div className="h-8 w-8 rounded-lg bg-brand-default flex items-center justify-center text-text-primary mx-auto">
-                F
-             </div>
+            <div className="mx-auto">
+              <Image 
+                src="/logo.png" 
+                alt="Bulup Logo" 
+                width={28} 
+                height={28} 
+                className="rounded-sm"
+              />
+            </div>
           )}
         </div>
 

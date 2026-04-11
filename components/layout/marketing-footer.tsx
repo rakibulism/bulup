@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { Github, Twitter } from 'lucide-react'
 
+import Image from 'next/image'
+
 export function MarketingFooter() {
   return (
     <footer className="border-t border-l-border bg-l-background pt-16 pb-8 text-l-foreground">
@@ -10,9 +12,13 @@ export function MarketingFooter() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-2 md:col-span-1 flex flex-col items-start">
             <Link href="/" className="font-medium text-lg tracking-tight flex items-center gap-2 mb-4">
-               <div className="w-5 h-5 bg-l-primary rounded-sm flex items-center justify-center opacity-80">
-                <div className="w-2 h-2 bg-l-background rounded-full" />
-              </div>
+              <Image 
+                src="/logo.png" 
+                alt="Bulup Logo" 
+                width={24} 
+                height={24} 
+                className="rounded-sm opacity-80"
+              />
               bulup
             </Link>
             <p className="text-sm text-l-muted-foreground mt-2 max-w-xs">

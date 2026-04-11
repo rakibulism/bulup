@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
 
-import { SignedIn, SignedOut } from "@clerk/nextjs"
+import Image from 'next/image'
 
 export function MarketingNavbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -28,9 +28,13 @@ export function MarketingNavbar() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-8">
           <Link href="/" className="font-medium text-lg tracking-tight flex items-center gap-2 text-l-foreground">
-            <div className="w-5 h-5 bg-l-primary rounded-sm flex items-center justify-center">
-              <div className="w-2 h-2 bg-l-background rounded-full" />
-            </div>
+            <Image 
+              src="/logo.png" 
+              alt="Bulup Logo" 
+              width={24} 
+              height={24} 
+              className="rounded-sm"
+            />
             bulup
           </Link>
           <nav className="hidden md:flex items-center gap-6 text-sm text-l-muted-foreground font-medium">
