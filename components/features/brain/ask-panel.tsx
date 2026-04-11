@@ -1,3 +1,8 @@
+"use client"
+
+import * as React from "react"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 import { Sparkles, Send, MessageSquare, History, User, Bot, ArrowDown } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
