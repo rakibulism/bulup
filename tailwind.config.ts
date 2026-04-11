@@ -42,6 +42,16 @@ const config: Config = {
           error: "var(--color-error)",
           errorSubtle: "var(--color-error-subtle)",
         },
+        // Landing Page Tokens
+        l: {
+          background: "#FFFFFF",
+          foreground: "#09090b", // zinc-950
+          primary: "#09090b",
+          secondary: "#f4f4f5", // zinc-100
+          muted: "#f4f4f5",
+          "muted-foreground": "#71717a", // zinc-500
+          border: "#e4e4e7", // zinc-200
+        }
       },
       borderRadius: {
         xs: "var(--radius-xs)",
@@ -51,6 +61,26 @@ const config: Config = {
         xl: "var(--radius-xl)",
         "2xl": "var(--radius-2xl)",
         full: "9999px",
+      },
+      animation: {
+        "fade-in": "fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "slide-up": "slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+      },
+      keyframes: {
+        "fade-in": {
+          "from": { opacity: "0" },
+          "to": { opacity: "1" },
+        },
+        "slide-up": {
+          "from": { 
+            opacity: "0",
+            transform: "translateY(2rem)" 
+          },
+          "to": { 
+            opacity: "1",
+            transform: "translateY(0)" 
+          },
+        },
       },
       fontSize: {
         // Display
