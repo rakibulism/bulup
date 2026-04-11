@@ -1,7 +1,5 @@
 "use client"
 
-export const dynamic = "force-dynamic"
-
 import * as React from "react"
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
@@ -22,7 +20,6 @@ import {
   Cpu,
   MousePointer2
 } from 'lucide-react'
-import { SignedIn, SignedOut } from "@clerk/nextjs"
 
 export default function LandingPage() {
   React.useEffect(() => {
@@ -52,20 +49,11 @@ export default function LandingPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-            <SignedOut>
-              <Link href="/sign-up" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full sm:w-auto rounded-full px-8 h-12 text-base bg-l-primary text-l-background hover:bg-l-primary/90">
-                  Start for free
-                </Button>
-              </Link>
-            </SignedOut>
-            <SignedIn>
-              <Link href="/dashboard" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full sm:w-auto rounded-full px-8 h-12 text-base bg-l-primary text-l-background hover:bg-l-primary/90 font-medium">
-                  Go to Dashboard
-                </Button>
-              </Link>
-            </SignedIn>
+            <Link href="/dashboard" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full sm:w-auto rounded-full px-8 h-12 text-base bg-l-primary text-l-background hover:bg-l-primary/90 font-medium">
+                Try Bulup Now
+              </Button>
+            </Link>
             
             <Link href="#features" className="w-full sm:w-auto">
               <Button variant="outline" size="lg" className="w-full sm:w-auto rounded-full px-8 h-12 text-base group border-l-border hover:bg-l-secondary text-l-foreground">
@@ -401,7 +389,7 @@ export default function LandingPage() {
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-4 w-4 text-l-primary" /> 50 Brain entries</li>
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-4 w-4 text-l-primary" /> Markdown export</li>
               </ul>
-              <Link href="/sign-up">
+              <Link href="/dashboard">
                 <Button variant="outline" className="w-full border-l-border hover:bg-l-secondary text-l-foreground">Get started free</Button>
               </Link>
             </div>
@@ -422,7 +410,7 @@ export default function LandingPage() {
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-4 w-4 text-l-primary" /> All export formats</li>
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-4 w-4 text-l-primary" /> No watermarks</li>
               </ul>
-              <Link href="/sign-up">
+              <Link href="/dashboard">
                 <Button className="w-full shadow-sm bg-l-primary text-l-background hover:bg-l-primary/90">Start Pro</Button>
               </Link>
             </div>
@@ -440,14 +428,14 @@ export default function LandingPage() {
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-4 w-4 text-l-primary" /> Export history</li>
                 <li className="flex items-center gap-3"><CheckCircle2 className="h-4 w-4 text-l-primary" /> Priority support</li>
               </ul>
-              <Link href="/sign-up">
+              <Link href="/dashboard">
                 <Button variant="outline" className="w-full border-l-border hover:bg-l-secondary text-l-foreground">Start Team trial</Button>
               </Link>
             </div>
           </div>
           
           <p className="text-center text-xs text-l-muted-foreground mt-8">
-            No credit card required on Free. Cancel Pro or Team anytime.
+            Try Bulup today. No account required to start.
           </p>
         </section>
 
@@ -462,25 +450,18 @@ export default function LandingPage() {
               Here. With a clear architecture, a real design system, and a team that knows exactly what to build.
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
-              <SignedOut>
-                <Link href="/sign-up" className="w-full sm:w-auto">
-                  <Button size="lg" className="rounded-full px-8 w-full sm:w-auto h-12 bg-l-primary text-l-background hover:bg-l-primary/90">Start for free</Button>
-                </Link>
-              </SignedOut>
-              <SignedIn>
-                <Link href="/dashboard" className="w-full sm:w-auto">
-                  <Button size="lg" className="rounded-full px-8 w-full sm:w-auto h-12 bg-l-primary text-l-background hover:bg-l-primary/90 font-medium">Go to Dashboard</Button>
-                </Link>
-              </SignedIn>
+              <Link href="/dashboard" className="w-full sm:w-auto">
+                <Button size="lg" className="rounded-full px-8 w-full sm:w-auto h-12 bg-l-primary text-l-background hover:bg-l-primary/90">Try Bulup Now</Button>
+              </Link>
               
               <Link href="#features" className="w-full sm:w-auto">
                 <Button variant="outline" size="lg" className="rounded-full px-8 w-full sm:w-auto h-12 group border-l-border hover:bg-l-secondary text-l-foreground">
-                  Book a walkthrough <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  See how it works <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
             </div>
             <p className="text-xs text-l-muted-foreground">
-              Free plan includes 1 product. No credit card needed.
+              Free plan includes 1 product. Direct access, no signup required.
             </p>
           </div>
         </section>

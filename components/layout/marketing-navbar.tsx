@@ -42,23 +42,11 @@ export function MarketingNavbar() {
         </div>
         
         <div className="flex items-center gap-4">
-          <SignedOut>
-            <Link href="/sign-in" className="text-sm font-medium text-l-muted-foreground hover:text-l-foreground hidden sm:block transition-colors">
-              Login
-            </Link>
-            <Link href="/sign-up">
-              <Button size="sm" className="rounded-full px-5 bg-l-primary text-l-background hover:bg-l-primary/90">
-                Start for free
-              </Button>
-            </Link>
-          </SignedOut>
-          <SignedIn>
-            <Link href="/dashboard">
-              <Button size="sm" className="rounded-full px-5 bg-l-primary text-l-background hover:bg-l-primary/90 font-medium">
-                Go to Dashboard
-              </Button>
-            </Link>
-          </SignedIn>
+          <Link href="/dashboard">
+            <Button size="sm" className="rounded-full px-5 bg-l-primary text-l-background hover:bg-l-primary/90 font-medium">
+              Launch App
+            </Button>
+          </Link>
         </div>
       </div>
     </header>

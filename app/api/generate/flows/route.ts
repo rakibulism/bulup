@@ -1,4 +1,4 @@
-import { auth } from "@clerk/nextjs/server";
+// import { auth } from "@clerk/nextjs/server";
 import Anthropic from "@anthropic-ai/sdk";
 import { FLOW_SYSTEM_PROMPT, getFlowsPrompt } from "@/lib/ai/prompts/flows";
 
