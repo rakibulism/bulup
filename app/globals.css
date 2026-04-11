@@ -99,4 +99,7 @@
   .shadow-xl {
     box-shadow: 0 16px 48px rgba(0,0,0,0.6);
   }
+  .bg-subtle-gradient {
+    background: linear-gradient(145deg, #FFFFFF 0%, #f4f4f5 100%);
+  }
 }
