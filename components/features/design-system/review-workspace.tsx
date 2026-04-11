@@ -4,6 +4,7 @@ import * as React from "react"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { ExportPanel } from "./export-panel"
+import { cn } from "@/lib/utils"
 
 export type ReviewWorkspaceProps = {
   resultData: any; 
