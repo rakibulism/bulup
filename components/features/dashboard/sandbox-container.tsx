@@ -9,7 +9,7 @@ import {
   Bot, 
   Mic, 
   ArrowUpRight, 
-  Figma 
+  ExternalLink
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { IconButton } from "@/components/ui/icon-button"
@@ -50,7 +50,7 @@ export function SandboxContainer() {
             <span>Modern Dark</span>
           </Button>
           <div className="h-4 w-px bg-border-subtle mx-1" />
-          <IconButton icon={<Figma className="h-4 w-4" />} variant="ghost" size="sm" />
+          <IconButton icon={<ExternalLink className="h-4 w-4" />} variant="ghost" size="sm" />
         </div>
       </div>
 

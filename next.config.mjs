@@ -14,8 +14,6 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
   // Speed: Enable SWC minification (faster than Terser, already default in Next 14 but explicit)
   swcMinify: true,
-  // Speed: Reduce output size with standalone mode (also works better on Vercel)
-  output: 'standalone',
 };
 
 export default nextConfig;
