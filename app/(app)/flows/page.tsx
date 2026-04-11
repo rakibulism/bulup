@@ -6,7 +6,7 @@ import * as React from "react"
 import { AppHeader } from "@/components/layout/app-header"
 import { Button } from "@/components/ui/button"
 import { Spinner } from "@/components/ui/spinner"
-import { CanvasPreview } from "@/components/features/canvas/canvas-preview"
+import { FlowMindmapCanvas } from "@/components/features/flows/flow-mindmap"
 import { Sparkles, Beaker, Wand2, LayoutTemplate, ArrowRight, BookOpen, Users, Compass } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -138,8 +138,8 @@ function FlowContent() {
            <div className="flex flex-col items-center gap-6 text-center animate-in zoom-in-95 duration-500">
               <Spinner size="lg" className="text-brand-text" />
               <div className="space-y-2 max-w-sm">
-                 <p className="text-heading-md font-semibold text-text-primary">Generating Infinite Canvas</p>
-                 <p className="text-body-sm text-text-secondary">Mapping out screens, user journeys, and interactions based on your product idea...</p>
+                 <p className="text-heading-md font-semibold text-text-primary">Generating Idea Roadmap</p>
+                 <p className="text-body-sm text-text-secondary">Using AI to map out every screen, step, and user flow from your idea...</p>
               </div>
            </div>
         </div>
@@ -147,7 +147,7 @@ function FlowContent() {
 
       {status === "success" && (
         <div className="relative flex-1 rounded-2xl border border-border-default overflow-hidden animate-in fade-in zoom-in-95 duration-500 bg-bg-base fill-available">
-          <CanvasPreview />
+          <FlowMindmapCanvas />
         </div>
       )}
     </div>
@@ -165,4 +165,5 @@ export default function FlowsPage() {
     </Suspense>
   )
 }
+
 
