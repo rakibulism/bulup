@@ -209,11 +209,11 @@ export function FlowMindmapCanvas() {
               const y2 = originY + node.y + nodeHeight / 2 // vertical center of target
 
               // Cubic bezier curve path
-              const d = \`M \${x1} \${y1} C \${x1 + 100} \${y1}, \${x2 - 100} \${y2}, \${x2} \${y2}\`
+              const d = `M ${x1} ${y1} C ${x1 + 100} ${y1}, ${x2 - 100} ${y2}, ${x2} ${y2}`
 
               return (
                 <path
-                  key={\`edge-\${node.id}\`}
+                  key={`edge-${node.id}`}
                   d={d}
                   fill="none"
                   stroke="url(#line-gradient)"
@@ -246,8 +246,8 @@ export function FlowMindmapCanvas() {
                   node.highlight ? "border-brand-default" : "border-border-strong hover:border-brand-default/50"
                 )}
                 style={{
-                  left: \`calc(50% + \${node.x}px)\`,
-                  top: \`calc(50% + \${node.y}px)\`,
+                  left: `calc(50% + ${node.x}px)`,
+                  top: `calc(50% + ${node.y}px)`,
                 }}
               >
                 {/* Visual Connection Dots */}
