@@ -185,8 +185,8 @@ export function FlowMindmapCanvas() {
           <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
             <defs>
               <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="hsl(var(--text-tertiary))" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="hsl(var(--text-secondary))" stopOpacity="1" />
+                <stop offset="0%" stopColor="hsl(var(--text-primary))" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="hsl(var(--text-primary))" stopOpacity="0.8" />
               </linearGradient>
             </defs>
             {nodes.map((node) => {
