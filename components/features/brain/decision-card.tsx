@@ -3,7 +3,8 @@
 import * as React from "react"
 import { Badge } from "@/components/ui/badge"
 import { StatusChip } from "@/components/composed/status-chip"
-import { Calendar, Quote, Info } from "lucide-react"
+import { Calendar, Quote, ChevronDown } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
 export interface Decision {
   id: string
@@ -15,12 +16,17 @@ export interface Decision {
 }
 
 export function DecisionCard({ decision }: { decision: Decision }) {
+  const [isOpen, setIsOpen] = React.useState(false)
+
   return (
     <div className="group relative pl-8 pb-10 border-l border-border-subtle last:pb-0">
       {/* Timeline Dot */}
       <div className="absolute left-[-5px] top-1 h-[9px] w-[9px] rounded-full bg-brand-default ring-4 ring-bg-base" />
 
-      <div className="flex flex-col gap-3 p-5 rounded-2xl bg-bg-surface1 border border-border-default transition-all hover:bg-bg-surface2 hover:shadow-lg">
+      <div 
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex flex-col gap-3 p-5 rounded-2xl bg-bg-surface1 border border-border-default transition-all hover:bg-bg-surface2 hover:shadow-lg cursor-pointer active:scale-[0.99]"
+      >
         <div className="flex items-center justify-between gap-4">
            <div className="flex items-center gap-2">
               <StatusChip label={decision.type} variant="default" size="sm" />
@@ -31,6 +37,13 @@ export function DecisionCard({ decision }: { decision: Decision }) {
            <div className="flex items-center gap-2 text-caption text-text-tertiary">
               <Calendar className="h-3 w-3" />
               {new Date(decision.createdAt).toLocaleDateString()}
+              <motion.div
+                animate={{ rotate: isOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+                className="ml-2"
+              >
+                <ChevronDown className="h-4 w-4" />
+              </motion.div>
            </div>
         </div>
 
@@ -38,14 +51,24 @@ export function DecisionCard({ decision }: { decision: Decision }) {
           {decision.statement}
         </h4>
 
-        {decision.rationale && (
-          <div className="flex gap-2 p-3 rounded-lg bg-bg-surface3 border-l-2 border-brand-subtle">
-             <Quote className="h-4 w-4 text-text-tertiary shrink-0 mt-0.5" />
-             <p className="text-body-sm text-text-secondary italic leading-relaxed">
-               {decision.rationale}
-             </p>
-          </div>
-        )}
+        <AnimatePresence initial={false}>
+          {isOpen && decision.rationale && (
+            <motion.div 
+               initial={{ height: 0, opacity: 0 }}
+               animate={{ height: "auto", opacity: 1 }}
+               exit={{ height: 0, opacity: 0 }}
+               transition={{ duration: 0.3, ease: "easeInOut" }}
+               className="overflow-hidden"
+            >
+              <div className="flex gap-2 p-3 rounded-lg bg-bg-surface3 border-l-2 border-brand-subtle mt-2">
+                 <Quote className="h-4 w-4 text-text-tertiary shrink-0 mt-0.5" />
+                 <p className="text-body-sm text-text-secondary italic leading-relaxed">
+                   {decision.rationale}
+                 </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   )

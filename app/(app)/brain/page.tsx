@@ -14,7 +14,9 @@ import {
 } from "@/components/composed/segmented-control"
 import { DecisionCard } from "@/components/features/brain/decision-card"
 import { AskPanel } from "@/components/features/brain/ask-panel"
-import { History, MessageSquareShare, Plus } from "lucide-react"
+import { History, MessageSquareShare, Plus, X, Send } from "lucide-react"
+import { addDecision } from "@/lib/actions/decisions"
+import { motion, AnimatePresence } from "framer-motion"
 
 // Mock decisions for demo if no database data is available
 const MOCK_DECISIONS = [
@@ -41,14 +43,54 @@ import { Suspense } from "react"
 function BrainContent() {
   const searchParams = useSearchParams()
   const productId = searchParams.get("productId") || "mock-product"
+  
+  const [showAddForm, setShowAddForm] = React.useState(false)
+  const [decisions, setDecisions] = React.useState(MOCK_DECISIONS)
+  const [isSubmitting, setIsSubmitting] = React.useState(false)
+  const [formData, setFormData] = React.useState({
+    statement: "",
+    rationale: "",
+    type: "STRATEGY" as any
+  })
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!formData.statement) return
+    setIsSubmitting(true)
+
+    try {
+      const res = await addDecision(productId, formData)
+      if (res.success) {
+        // Optimistically add to list for demo
+        const newEntry = {
+          id: Math.random().toString(),
+          ...formData,
+          source: "MANUAL" as const,
+          createdAt: new Date().toISOString()
+        }
+        setDecisions([newEntry, ...decisions])
+        setFormData({ statement: "", rationale: "", type: "STRATEGY" })
+        setShowAddForm(false)
+      }
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <div className="flex flex-col gap-8">
       <AppHeader 
         title="Product Brain" 
         actions={
-          <Button size="sm" className="gap-2 bg-text-primary text-text-inverse hover:bg-text-secondary">
-            <Plus className="h-4 w-4" /> Add Decision
+          <Button 
+            size="sm" 
+            onClick={() => setShowAddForm(!showAddForm)}
+            className="gap-2 bg-text-primary text-text-inverse hover:bg-text-secondary"
+          >
+            {showAddForm ? <X className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+            {showAddForm ? "Cancel" : "Add Decision"}
           </Button>
         }
       />
@@ -69,8 +111,67 @@ function BrainContent() {
           <SegmentedControlContent value="timeline" className="animate-in fade-in duration-500">
              <div className="flex flex-col">
                 <h3 className="text-label-sm font-bold text-text-tertiary uppercase tracking-widest mb-8">History & Evolution</h3>
+                
+                <AnimatePresence>
+                  {showAddForm && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      className="mb-10 p-6 rounded-2xl bg-bg-surface2 border-2 border-brand-subtle shadow-xl"
+                    >
+                      <form onSubmit={handleSubmit} className="space-y-4">
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                             <label className="text-[10px] font-bold uppercase text-text-tertiary">Statement</label>
+                             <input 
+                               autoFocus
+                               required
+                               placeholder="e.g. Switched to Bun for runtime"
+                               className="w-full bg-bg-base border border-border-default rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-brand-default"
+                               value={formData.statement}
+                               onChange={e => setFormData({ ...formData, statement: e.target.value })}
+                             />
+                          </div>
+                          <div className="space-y-2">
+                             <label className="text-[10px] font-bold uppercase text-text-tertiary">Type</label>
+                             <select 
+                               className="w-full bg-bg-base border border-border-default rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-brand-default"
+                               value={formData.type}
+                               onChange={e => setFormData({ ...formData, type: e.target.value as any })}
+                             >
+                                <option value="ARCHITECTURE">Architecture</option>
+                                <option value="DESIGN">Design</option>
+                                <option value="STRATEGY">Strategy</option>
+                                <option value="FEATURE">Feature</option>
+                             </select>
+                          </div>
+                        </div>
+                        <div className="space-y-2">
+                           <label className="text-[10px] font-bold uppercase text-text-tertiary">Rationale (Optional)</label>
+                           <textarea 
+                             placeholder="The 'why' behind this decision..."
+                             className="w-full bg-bg-base border border-border-default rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-brand-default min-h-[80px] resize-none"
+                             value={formData.rationale}
+                             onChange={e => setFormData({ ...formData, rationale: e.target.value })}
+                           />
+                        </div>
+                        <div className="flex justify-end gap-3">
+                           <Button 
+                             type="submit" 
+                             disabled={isSubmitting || !formData.statement}
+                             className="gap-2 bg-brand-default text-white"
+                           >
+                              {isSubmitting ? "Saving..." : <><Send className="h-4 w-4" /> Save Decision</>}
+                           </Button>
+                        </div>
+                      </form>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 <div className="flex flex-col">
-                  {MOCK_DECISIONS.map((decision) => (
+                  {decisions.map((decision) => (
                     <DecisionCard key={decision.id} decision={decision} />
                   ))}
                 </div>

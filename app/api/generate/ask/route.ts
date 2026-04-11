@@ -20,13 +20,27 @@ export async function POST(req: Request) {
     if (!productId || !question) return new Response("Missing params", { status: 400 });
 
     // Fetch full product context
-    const product = await prisma.product.findUnique({
+    let product = await prisma.product.findUnique({
       where: { id: productId },
       include: {
         flows: true,
         designSystem: true,
       }
     });
+
+    // Fallback for mock preview/demo mode
+    if (!product && productId === "mock-product") {
+       product = {
+         id: "mock-product",
+         name: "Bulup Studio",
+         personality: "Professional, Innovative, Clean",
+         flows: [],
+         designSystem: {
+            colors: JSON.stringify({ primary: "#6E63F5", bg: "#0C0C0C" }),
+            typography: JSON.stringify({ font: "Inter" })
+         }
+       } as any;
+    }
 
     if (!product) return new Response("Product not found", { status: 404 });
 
