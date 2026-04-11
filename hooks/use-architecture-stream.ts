@@ -55,23 +55,43 @@ export function useArchitectureStream() {
 
         buffer += decoder.decode(value, { stream: true })
 
-        // Process SSE events
-        const lines = buffer.split("\n\n")
-        buffer = lines.pop() || ""
-
-        for (const line of lines) {
-          if (line.startsWith("event: progress")) {
-             const data = JSON.parse(line.replace("event: progress\ndata: ", ""))
-             setProgress(data.message)
-          } else if (line.startsWith("event: result")) {
-             const data = JSON.parse(line.replace("event: result\ndata: ", ""))
-             setResult(data)
-             setStatus("success")
-          } else if (line.startsWith("event: error")) {
-             const data = JSON.parse(line.replace("event: error\ndata: ", ""))
-             setError(data.message)
-             setStatus("error")
+        // Process SSE events: look for double newlines which indicate end of event
+        let boundary = buffer.indexOf("\n\n")
+        while (boundary !== -1) {
+          const chunk = buffer.substring(0, boundary).trim()
+          buffer = buffer.substring(boundary + 2)
+          
+          if (chunk.includes("event: progress")) {
+             try {
+               const dataStr = chunk.split("data: ")[1];
+               const data = JSON.parse(dataStr);
+               setProgress(data.message);
+             } catch (e) {
+               console.warn("Failed to parse progress event:", chunk);
+             }
+          } else if (chunk.includes("event: result")) {
+             try {
+               const dataStr = chunk.split("data: ")[1];
+               const data = JSON.parse(dataStr);
+               setResult(data);
+               setStatus("success");
+             } catch (e) {
+               console.error("Failed to parse result event:", chunk);
+               setError("AI returned malformed data. Please try again.");
+               setStatus("error");
+             }
+          } else if (chunk.includes("event: error")) {
+             try {
+               const dataStr = chunk.split("data: ")[1];
+               const data = JSON.parse(dataStr);
+               setError(data.message);
+               setStatus("error");
+             } catch (e) {
+               setError("An unknown error occurred during generation.");
+               setStatus("error");
+             }
           }
+          boundary = buffer.indexOf("\n\n")
         }
       }
     } catch (err: any) {

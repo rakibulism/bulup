@@ -41,5 +41,5 @@ Generate a product architecture for the following brief:
 
 "${brief}"
 
-Remember to return ONLY the JSON object.
+Remember to return ONLY the raw JSON object. Do not wrap it in markdown backticks or block quotes.
 `;
