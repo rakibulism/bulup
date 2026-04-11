@@ -300,51 +300,73 @@ Each section has an [Edit] icon on hover → opens inline edit with AI follow-up
 
 ## 08 — Design System Studio
 
-**Purpose:** Generate and manage a complete design system.
-**Layout:** AppShell + 3-zone layout: Brand input (left panel) / Token viewer (center) / Export panel (right panel, collapsible).
+**Purpose:** A 3-stage intelligent workflow to build, audit, and export unified design systems, solving the disconnect between design and code.
+**Layout:** AppShell + 2-zone interactive workflow layout.
 
-### Left Panel — Brand Input
-- Brand name input
-- Personality selector (multi-chip, max 5)
-- Audience input
-- Visual reference dropdown
-- [Generate design system] CTA
-- After generation: [Regenerate] + [Refine with AI] input
+### Stage 1 — Brand Intelligence Input
 
-### Center — Token Viewer
-Tabs: Colors / Typography / Spacing / Components
+Structured intake that builds the system live as the user types.
 
-**Colors tab:**
-- Primitive grid: color swatches with token names + hex values
-- Semantic list: semantic token name → maps to primitive → hex value
-- Component tokens: scoped tokens per component type
+**Left panel — inputs:**
+- **Section A: Identity**
+  - Product Name [input]
+  - Product Type [dropdown]: SaaS / Mobile App / Marketing Site / E-commerce / Dashboard / Developer Tool
+- **Section B: Brand Personality**
+  - Tone chips (multi-select, max 4): Professional / Technical / Trustworthy / Minimal / Warm / Fast / Bold / Sharp / Clean / Playful / Luxurious / Innovative
+- **Section C: Audience**
+  - Who uses this? [input]
+  - What do they value? [input]
+- **Section D: Visual Direction**
+  - Closest reference [dropdown]: Linear / Vercel / Stripe / Notion / Raycast / Figma / Arc / GitHub / Other
+  - Color preference [preset palettes]: Neutral / Cool / Warm / High contrast / Brand blue / Custom
+  - Mode toggle: Light only / Dark only / Both (recommended)
+- **[Generate Design System] CTA** (No emojis, professional styling)
 
-**Typography tab:**
-- Type scale preview: each level rendered with sample text
-- Token name + values for each level
+**Right panel — LIVE PREVIEW** (Updates instantly during input)
+- Typography scale with actual sample text.
+- Primary color swatch + 5 tints.
+- Micro component preview (one button, one input, one badge).
+- Contrast ratio badge: **AA ✓** or **Fail ✗** in real-time.
 
-**Spacing tab:**
-- Visual spacing scale
-- Token name + value for each step
+### Stage 2 — Generate + Review
 
-**Components tab:**
-- Component list (atoms → molecules → organisms)
-- Each component card:
-  - Component name
-  - All states shown (default, hover, focus, disabled, etc.)
-  - Specs: height, padding, radius, typography, color tokens used
+Opens a tabbed review workspace containing the generated design logic.
 
-### Right Panel — Export
-- Format checkboxes: CSS / Tailwind / JSON / Figma guide
+**Tabs (5 total):**
+- **Colors**: Primitive palette (9 swatches with hex + token name), Semantic tokens mapped with purpose labels, and Dark mode tokens (side-by-side with light). Features built-in accessibility audit showing contrast ratios per color pair. Failures have a 1-click auto-fix ("Forge suggests: darken by 15%").
+- **Typography**: Full scale rendered with real sample text. Values are editable inline.
+- **Spacing**: Visual spacing ruler. Every token shown as a colored bar to visualize the rhythm. Editable inline.
+- **Components**: Live preview of every component in all 8 states (Default, Hover, Focus, Active, Loading, Error, Empty, Disabled). Toggles between Light and Dark mode.
+- **Export**: Transition to Stage 3.
+
+### Stage 3 — Export Panel
+
+Actionable and specific exports tailored to developers and designers.
+
+**For Designers:**
+- Figma variable structure guide (.md)
+- Component spec sheet (.md)
+- Design tokens visual map (.pdf)
+
+**For Developers:**
+- CSS custom properties (.css)
+- Tailwind config (.js)
+- Design tokens JSON (.json)
+- TypeScript token constants (.ts)
+
+**Accessibility Report:**
+- Contrast audit + fixes (.md)
+
+**Quick Actions:**
+- [Copy CSS variables]
+- [Copy Tailwind config]
 - [Export selected] / [Export all]
-- Download history (last 5 exports)
 
 ### States
-- Default (no design system generated)
-- Brand form filled (ready to generate)
-- Generating (animated progress)
-- Output ready (all panels populated)
-- Export downloading
+- Default (Stage 1 - form + live preview)
+- Generating (animated transition)
+- Review workspace (Stage 2 - tabs populated)
+- Export modal/panel open (Stage 3)
 
 ---
 
