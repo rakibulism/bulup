@@ -44,11 +44,36 @@ export async function POST(req: Request) {
 
           // Mock sending back a completed structured payload!
           const mockedStructuredData = {
-            colors: { success: true },
-            typography: { ready: true },
-            spacing: { default: "4px" },
-            components: { mapped: true },
-            exports: { ready: true }
+            colors: {
+              primitive: [
+                { name: "Brand 500", hex: "#6E63F5" },
+                { name: "Neutral 900", hex: "#111111" },
+                { name: "Success 500", hex: "#22C55E" },
+                { name: "Error 500", hex: "#EF4444" }
+              ],
+              semantic: [
+                { name: "bg-base", map: "Neutral 950", hex: "#0C0C0C" },
+                { name: "brand-default", map: "Brand 500", hex: "#6E63F5" },
+                { name: "text-primary", map: "Neutral 50", hex: "#F0F0F0" }
+              ]
+            },
+            typography: [
+              { label: "Display 2xl", token: "--text-display-2xl", size: "48px", weight: "700", line: "1.1" },
+              { label: "Heading xl", token: "--text-heading-xl", size: "28px", weight: "600", line: "1.2" },
+              { label: "Body md", token: "--text-body-md", size: "15px", weight: "400", line: "1.6" },
+              { label: "Label sm", token: "--text-label-sm", size: "12px", weight: "500", line: "1.4" }
+            ],
+            spacing: [
+              { token: "--space-1", value: "4px" },
+              { token: "--space-4", value: "16px" },
+              { token: "--space-8", value: "32px" },
+              { token: "--space-12", value: "48px" },
+              { token: "--space-24", value: "96px" }
+            ],
+            components: {
+              button: { radius: "8px", font: "--text-body-md" },
+              input: { radius: "6px", font: "--text-label-md" }
+            }
           };
 
           controller.enqueue(encoder.encode(`event: result\ndata: ${JSON.stringify(mockedStructuredData)}\n\n`));

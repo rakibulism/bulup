@@ -29,40 +29,57 @@ export function ExportPanel() {
             </div>
             
             <div className="p-6 space-y-8">
-               <div className="space-y-3">
-                 <h4 className="text-[10px] uppercase tracking-widest text-text-tertiary font-bold">For Designers</h4>
-                 <label className="flex items-center gap-3 cursor-pointer group">
-                   <div className="text-brand-text"><CheckSquare className="h-5 w-5" /></div>
-                   <span className="text-body-sm text-text-primary group-hover:text-brand-text transition-colors">Figma variable structure guide (.md)</span>
-                 </label>
-                 <label className="flex items-center gap-3 cursor-pointer group">
-                   <div className="text-brand-text"><CheckSquare className="h-5 w-5" /></div>
-                   <span className="text-body-sm text-text-primary group-hover:text-brand-text transition-colors">Component spec sheet (.md)</span>
-                 </label>
-                 <label className="flex items-center gap-3 cursor-pointer opacity-50">
-                   <div className="w-5 h-5 border-2 border-border-strong rounded flex-shrink-0" />
-                   <span className="text-body-sm text-text-primary">Design tokens visual map (.pdf)</span>
-                 </label>
+               <div className="space-y-4">
+                 <div className="flex items-center justify-between">
+                    <h4 className="text-[10px] uppercase tracking-widest text-text-tertiary font-bold">Design Handoff (Figma)</h4>
+                    <Badge variant="outline" className="text-[9px] uppercase font-mono opacity-50">v1.2</Badge>
+                 </div>
+                 <div className="space-y-3">
+                    <label className="flex items-center gap-3 cursor-pointer group">
+                      <div className="text-brand-text"><CheckSquare className="h-5 w-5" /></div>
+                      <div>
+                         <span className="text-body-sm text-text-primary group-hover:text-brand-text transition-colors">Figma Variable Structure (.md)</span>
+                         <p className="text-[10px] text-text-tertiary">Optimized for Figma Tokens Studio</p>
+                      </div>
+                    </label>
+                    <label className="flex items-center gap-3 cursor-pointer group">
+                      <div className="text-brand-text"><CheckSquare className="h-5 w-5" /></div>
+                      <div>
+                         <span className="text-body-sm text-text-primary group-hover:text-brand-text transition-colors">Component Architecture Spec (.md)</span>
+                         <p className="text-[10px] text-text-tertiary">Full property & state documentation</p>
+                      </div>
+                    </label>
+                 </div>
                </div>
 
-               <div className="space-y-3">
-                 <h4 className="text-[10px] uppercase tracking-widest text-text-tertiary font-bold">For Developers</h4>
-                 <label className="flex items-center gap-3 cursor-pointer group">
-                   <div className="text-brand-text"><CheckSquare className="h-5 w-5" /></div>
-                   <span className="text-body-sm text-text-primary group-hover:text-brand-text transition-colors">CSS custom properties (.css)</span>
-                 </label>
-                 <label className="flex items-center gap-3 cursor-pointer group">
-                   <div className="text-brand-text"><CheckSquare className="h-5 w-5" /></div>
-                   <span className="text-body-sm text-text-primary group-hover:text-brand-text transition-colors">Tailwind config (.js)</span>
-                 </label>
-                 <label className="flex items-center gap-3 cursor-pointer group">
-                   <div className="text-brand-text"><CheckSquare className="h-5 w-5" /></div>
-                   <span className="text-body-sm text-text-primary group-hover:text-brand-text transition-colors">Design tokens JSON (.json)</span>
-                 </label>
-                 <label className="flex items-center gap-3 cursor-pointer opacity-50">
-                   <div className="w-5 h-5 border-2 border-border-strong rounded flex-shrink-0" />
-                   <span className="text-body-sm text-text-primary">TypeScript token constants (.ts)</span>
-                 </label>
+               <div className="space-y-4">
+                 <div className="flex items-center justify-between">
+                    <h4 className="text-[10px] uppercase tracking-widest text-text-tertiary font-bold">DevOps & Engineering</h4>
+                    <Badge variant="outline" className="text-[9px] uppercase font-mono opacity-50">Sync Enabled</Badge>
+                 </div>
+                 <div className="space-y-3">
+                    <label className="flex items-center gap-3 cursor-pointer group">
+                      <div className="text-brand-text"><CheckSquare className="h-5 w-5" /></div>
+                      <div>
+                         <span className="text-body-sm text-text-primary group-hover:text-brand-text transition-colors">Tailwind CSS Variable Config (.js)</span>
+                         <p className="text-[10px] text-text-tertiary">Deep integration with tailwind-merge</p>
+                      </div>
+                    </label>
+                    <label className="flex items-center gap-3 cursor-pointer group">
+                      <div className="text-brand-text"><CheckSquare className="h-5 w-5" /></div>
+                      <div>
+                         <span className="text-body-sm text-text-primary group-hover:text-brand-text transition-colors">Design Tokens Protocol (.json)</span>
+                         <p className="text-[10px] text-text-tertiary">W3C format compatible</p>
+                      </div>
+                    </label>
+                    <label className="flex items-center gap-3 cursor-pointer group">
+                      <div className="text-brand-text"><CheckSquare className="h-5 w-5" /></div>
+                      <div>
+                         <span className="text-body-sm text-text-primary group-hover:text-brand-text transition-colors">TypeScript Type Constants (.ts)</span>
+                         <p className="text-[10px] text-text-tertiary">Strictly typed theme keys</p>
+                      </div>
+                    </label>
+                 </div>
                </div>
 
                <div className="space-y-3">
