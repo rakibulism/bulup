@@ -7,7 +7,28 @@ import { ProductGrid } from "@/components/features/dashboard/product-grid"
 import { SandboxContainer } from "@/components/features/dashboard/sandbox-container"
 import { Plus, LayoutGrid, Clock, Users } from "lucide-react"
 
-// ... (skip down to the component)
+export const dynamic = "force-dynamic"
+
+const MOCK_PRODUCTS = [
+  {
+    id: "1",
+    name: "Nebula CRM",
+    brief: "AI-driven CRM for independent creators to manage sponsorships and outreach automatically.",
+    updatedAt: "2 hours ago",
+    hasArchitecture: true,
+    hasFlows: true,
+    hasDesignSystem: false,
+  },
+  {
+    id: "2",
+    name: "GhostWriter",
+    brief: "A minimalist blog platform that uses a distraction-free markdown editor with AI-assisted drafting.",
+    updatedAt: "Yesterday",
+    hasArchitecture: true,
+    hasFlows: false,
+    hasDesignSystem: true,
+  },
+]
 
 export default function DashboardPage() {
   return (
@@ -57,8 +78,8 @@ export default function DashboardPage() {
 
       {/* Design Sandbox Section */}
       <section className="max-w-4xl mx-auto w-full">
-         <h3 className="text-label-sm font-bold text-text-tertiary uppercase tracking-widest mb-4 px-1">Design Sandbox</h3>
-         <SandboxContainer />
+        <h3 className="text-label-sm font-bold text-text-tertiary uppercase tracking-widest mb-4 px-1">Design Sandbox</h3>
+        <SandboxContainer />
       </section>
 
       {/* Toolbar */}
