@@ -9,6 +9,7 @@ import { Spinner } from "@/components/ui/spinner"
 import { FlowMindmapCanvas } from "@/components/features/flows/flow-mindmap"
 import { Sparkles, Beaker, Wand2, LayoutTemplate, ArrowRight, BookOpen, Users, Compass } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { ConfirmModal } from "@/components/organisms/confirm-modal"
 
 import { Suspense } from "react"
 
@@ -23,6 +24,8 @@ const COMMUNITY_TEMPLATES = [
 function FlowContent() {
   const [status, setStatus] = React.useState<"idle" | "loading" | "success">("idle")
   const [prompt, setPrompt] = React.useState("")
+  const [isTemplateModalOpen, setIsTemplateModalOpen] = React.useState(false)
+  const [selectedTemplate, setSelectedTemplate] = React.useState<(typeof COMMUNITY_TEMPLATES)[0] | null>(null)
 
   const handleGenerate = () => {
     if (!prompt.trim()) return
@@ -33,8 +36,17 @@ function FlowContent() {
     }, 2000)
   }
 
-  const handleTemplateClick = (templateDesc: string) => {
-    setPrompt(templateDesc)
+  const handleTemplateClick = (template: (typeof COMMUNITY_TEMPLATES)[0]) => {
+    setSelectedTemplate(template)
+    setIsTemplateModalOpen(true)
+  }
+
+  const handleConfirmTemplate = () => {
+    if (selectedTemplate) {
+      setPrompt(selectedTemplate.desc)
+    }
+    setIsTemplateModalOpen(false)
+    setSelectedTemplate(null)
   }
 
   const handleIdeaWorkshop = () => {
@@ -113,7 +125,7 @@ function FlowContent() {
               {COMMUNITY_TEMPLATES.map((tmpl) => (
                 <button
                   key={tmpl.id}
-                  onClick={() => handleTemplateClick(tmpl.desc)}
+                  onClick={() => handleTemplateClick(tmpl)}
                   className="flex flex-col text-left p-5 rounded-2xl bg-bg-surface1 border border-border-subtle hover:border-brand-default/50 hover:bg-bg-surface2 transition-all group"
                 >
                   <div className="h-10 w-10 rounded-xl bg-bg-surface2 group-hover:bg-brand-default/10 flex items-center justify-center mb-4 transition-colors">
@@ -149,6 +161,18 @@ function FlowContent() {
         <div className="relative flex-1 rounded-2xl border border-border-default overflow-hidden animate-in fade-in zoom-in-95 duration-500 bg-bg-base fill-available">
           <FlowMindmapCanvas />
         </div>
+      )}
+
+      {selectedTemplate && (
+        <ConfirmModal
+          isOpen={isTemplateModalOpen}
+          onClose={() => setIsTemplateModalOpen(false)}
+          onConfirm={handleConfirmTemplate}
+          title={selectedTemplate.title}
+          description={selectedTemplate.desc}
+          confirmText="Use this template"
+          cancelText="Cancel"
+        />
       )}
     </div>
   )
