@@ -3,8 +3,8 @@ import { cn } from "@/lib/utils"
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "ghost" | "destructive"
-  size?: "default" | "sm" | "lg"
+  variant?: "primary" | "secondary" | "ghost" | "destructive" | "outline"
+  size?: "default" | "sm" | "lg" | "icon"
   asChild?: boolean
 }
 
@@ -17,6 +17,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const variantClasses = {
       primary: "bg-brand-default text-text-primary hover:bg-brand-hover shadow-sm",
       secondary: "bg-transparent border border-border-strong text-text-primary hover:bg-bg-surface3",
+      outline: "bg-transparent border border-border-default text-text-primary hover:bg-bg-surface2",
       ghost: "bg-transparent text-text-secondary hover:bg-bg-surface2 hover:text-text-primary",
       destructive: "bg-transparent border border-feedback-error text-feedback-error hover:bg-feedback-errorSubtle",
     }
@@ -25,6 +26,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       default: "h-9 px-4 py-2",
       sm: "h-8 rounded-md px-3 text-label-sm",
       lg: "h-10 rounded-lg px-8",
+      icon: "h-9 w-9",
     }
 
     return (

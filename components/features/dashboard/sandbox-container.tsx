@@ -30,7 +30,7 @@ export function SandboxContainer() {
       {/* Top Toolbar */}
       <div className="flex items-center justify-between mb-4 border-b border-border-subtle pb-4">
         <div className="flex items-center gap-3">
-          <IconButton icon={<Plus className="h-4 w-4" />} variant="ghost" size="sm" />
+          <IconButton icon={<Plus className="h-4 w-4" />} variant="ghost" size="sm" label="Add resource" />
           <div className="h-4 w-px bg-border-subtle mx-1" />
           <SegmentedControl value={platform} onValueChange={setPlatform}>
             <SegmentedControlList className="p-1 h-9 bg-bg-surface2">
@@ -50,7 +50,7 @@ export function SandboxContainer() {
             <span>Modern Dark</span>
           </Button>
           <div className="h-4 w-px bg-border-subtle mx-1" />
-          <IconButton icon={<ExternalLink className="h-4 w-4" />} variant="ghost" size="sm" />
+          <IconButton icon={<ExternalLink className="h-4 w-4" />} variant="ghost" size="sm" label="Open in external tool" />
         </div>
       </div>
 
@@ -75,6 +75,7 @@ export function SandboxContainer() {
             icon={<Mic className="h-4 w-4" />} 
             variant="ghost" 
             size="sm" 
+            label="Speech to text"
             className="text-text-tertiary hover:text-brand-text active:scale-90 transition-all"
           />
         </div>
