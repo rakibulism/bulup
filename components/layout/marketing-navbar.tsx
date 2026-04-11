@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { useState, useEffect } from 'react'
 
+import { SignedIn, SignedOut } from "@clerk/nextjs"
+
 export function MarketingNavbar() {
   const [scrolled, setScrolled] = useState(false)
 
@@ -35,20 +37,28 @@ export function MarketingNavbar() {
             <Link href="/dashboard" className="hover:text-l-foreground transition-colors">Dashboard</Link>
             <a href="#features" className="hover:text-l-foreground transition-colors">Workshop</a>
             <Link href="/flows" className="hover:text-l-foreground transition-colors">UX Flows</Link>
-            <Link href="/design-system" className="hover:text-l-foreground transition-colors">Design Studio</Link>
             <Link href="/brain" className="hover:text-l-foreground transition-colors">Brain</Link>
           </nav>
         </div>
         
         <div className="flex items-center gap-4">
-          <Link href="/sign-in" className="text-sm font-medium text-l-muted-foreground hover:text-l-foreground hidden sm:block transition-colors">
-            Login
-          </Link>
-          <Link href="/sign-up">
-            <Button size="sm" className="rounded-full px-5 bg-l-primary text-l-background hover:bg-l-primary/90">
-              Start for free
-            </Button>
-          </Link>
+          <SignedOut>
+            <Link href="/sign-in" className="text-sm font-medium text-l-muted-foreground hover:text-l-foreground hidden sm:block transition-colors">
+              Login
+            </Link>
+            <Link href="/sign-up">
+              <Button size="sm" className="rounded-full px-5 bg-l-primary text-l-background hover:bg-l-primary/90">
+                Start for free
+              </Button>
+            </Link>
+          </SignedOut>
+          <SignedIn>
+            <Link href="/dashboard">
+              <Button size="sm" className="rounded-full px-5 bg-l-primary text-l-background hover:bg-l-primary/90 font-medium">
+                Go to Dashboard
+              </Button>
+            </Link>
+          </SignedIn>
         </div>
       </div>
     </header>

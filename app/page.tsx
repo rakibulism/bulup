@@ -20,6 +20,7 @@ import {
   Cpu,
   MousePointer2
 } from 'lucide-react'
+import { SignedIn, SignedOut } from "@clerk/nextjs"
 
 export default function LandingPage() {
   React.useEffect(() => {
@@ -49,15 +50,27 @@ export default function LandingPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-            <Link href="/sign-up" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full sm:w-auto rounded-full px-8 h-12 text-base bg-l-primary text-l-background hover:bg-l-primary/90">
-                Start for free
+            <SignedOut>
+              <Link href="/sign-up" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto rounded-full px-8 h-12 text-base bg-l-primary text-l-background hover:bg-l-primary/90">
+                  Start for free
+                </Button>
+              </Link>
+            </SignedOut>
+            <SignedIn>
+              <Link href="/dashboard" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto rounded-full px-8 h-12 text-base bg-l-primary text-l-background hover:bg-l-primary/90 font-medium">
+                  Go to Dashboard
+                </Button>
+              </Link>
+            </SignedIn>
+            
+            <Link href="#features" className="w-full sm:w-auto">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto rounded-full px-8 h-12 text-base group border-l-border hover:bg-l-secondary text-l-foreground">
+                See how it works
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto rounded-full px-8 h-12 text-base group border-l-border hover:bg-l-secondary text-l-foreground">
-              See how it works
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
           </div>
         </section>
 
@@ -447,12 +460,22 @@ export default function LandingPage() {
               Here. With a clear architecture, a real design system, and a team that knows exactly what to build.
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
-              <Link href="/sign-up" className="w-full sm:w-auto">
-                <Button size="lg" className="rounded-full px-8 w-full sm:w-auto h-12 bg-l-primary text-l-background hover:bg-l-primary/90">Start for free</Button>
+              <SignedOut>
+                <Link href="/sign-up" className="w-full sm:w-auto">
+                  <Button size="lg" className="rounded-full px-8 w-full sm:w-auto h-12 bg-l-primary text-l-background hover:bg-l-primary/90">Start for free</Button>
+                </Link>
+              </SignedOut>
+              <SignedIn>
+                <Link href="/dashboard" className="w-full sm:w-auto">
+                  <Button size="lg" className="rounded-full px-8 w-full sm:w-auto h-12 bg-l-primary text-l-background hover:bg-l-primary/90 font-medium">Go to Dashboard</Button>
+                </Link>
+              </SignedIn>
+              
+              <Link href="#features" className="w-full sm:w-auto">
+                <Button variant="outline" size="lg" className="rounded-full px-8 w-full sm:w-auto h-12 group border-l-border hover:bg-l-secondary text-l-foreground">
+                  Book a walkthrough <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
               </Link>
-              <Button variant="outline" size="lg" className="rounded-full px-8 w-full sm:w-auto h-12 group border-l-border hover:bg-l-secondary text-l-foreground">
-                Book a walkthrough <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
             </div>
             <p className="text-xs text-l-muted-foreground">
               Free plan includes 1 product. No credit card needed.
