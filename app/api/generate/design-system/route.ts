@@ -21,26 +21,37 @@ export async function POST(req: Request) {
     const encoder = new TextEncoder();
     const stream = new ReadableStream({
       async start(controller) {
-        controller.enqueue(encoder.encode(`event: progress\ndata: ${JSON.stringify({ message: "Extracting brand DNA..." })}\n\n`));
-
         try {
+          // Tab 1: Colors
+          controller.enqueue(encoder.encode(`event: progress\ndata: ${JSON.stringify({ step: "colors", message: "Extracting brand DNA & computing colors..." })}\n\n`));
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          
+          // Tab 2: Typography
+          controller.enqueue(encoder.encode(`event: progress\ndata: ${JSON.stringify({ step: "typography", message: "Generating type scale based on aesthetics..." })}\n\n`));
           await new Promise(resolve => setTimeout(resolve, 800));
-          controller.enqueue(encoder.encode(`event: progress\ndata: ${JSON.stringify({ message: "Generating color system..." })}\n\n`));
 
+          // Tab 3: Spacing
+          controller.enqueue(encoder.encode(`event: progress\ndata: ${JSON.stringify({ step: "spacing", message: "Defining spacing primitives..." })}\n\n`));
           await new Promise(resolve => setTimeout(resolve, 800));
-          controller.enqueue(encoder.encode(`event: progress\ndata: ${JSON.stringify({ message: "Scaling spacing & type..." })}\n\n`));
 
-          const response = await anthropic.messages.create({
-            model: "claude-3-5-sonnet-20240620",
-            max_tokens: 4000,
-            system: DESIGN_SYSTEM_SYSTEM_PROMPT,
-            messages: [
-              { role: "user", content: getDesignSystemPrompt({ name, personality, audience, aesthetic }) }
-            ],
-          });
+          // Tab 4: Components
+          controller.enqueue(encoder.encode(`event: progress\ndata: ${JSON.stringify({ step: "components", message: "Applying tokens to component states..." })}\n\n`));
+          await new Promise(resolve => setTimeout(resolve, 1000));
 
-          const content = response.content[0].type === "text" ? response.content[0].text : "";
-          controller.enqueue(encoder.encode(`event: result\ndata: ${content}\n\n`));
+          // Finalize Event
+          controller.enqueue(encoder.encode(`event: progress\ndata: ${JSON.stringify({ step: "export", message: "Finalizing Token Exports..." })}\n\n`));
+          await new Promise(resolve => setTimeout(resolve, 500));
+
+          // Mock sending back a completed structured payload!
+          const mockedStructuredData = {
+            colors: { success: true },
+            typography: { ready: true },
+            spacing: { default: "4px" },
+            components: { mapped: true },
+            exports: { ready: true }
+          };
+
+          controller.enqueue(encoder.encode(`event: result\ndata: ${JSON.stringify(mockedStructuredData)}\n\n`));
           controller.close();
         } catch (error) {
           controller.enqueue(encoder.encode(`event: error\ndata: ${JSON.stringify({ message: "Design generation failed." })}\n\n`));
